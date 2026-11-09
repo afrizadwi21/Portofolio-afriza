@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Award, ExternalLink } from "lucide-react";
 import { Reveal, TitleReveal } from "./Reveal";
@@ -10,6 +10,9 @@ import { LinkedInIcon } from "../lib/icons";
 export function Certificates() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeCert, setActiveCert] = useState<CertificateItem | null>(null);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const cardRef = useRef<HTMLButtonElement>(null);
 
   const prev = () => {
     setCurrentIndex((curr) => (curr === 0 ? CERTIFICATES.length - 1 : curr - 1));
@@ -17,6 +20,25 @@ export function Certificates() {
 
   const next = () => {
     setCurrentIndex((curr) => (curr === CERTIFICATES.length - 1 ? 0 : curr + 1));
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = (x / rect.width) * 100;
+    const py = (y / rect.height) * 100;
+    const dx = (x - rect.width / 2) / (rect.width / 2);
+    const dy = (y - rect.height / 2) / (rect.height / 2);
+    setRotate({ x: -dy * 10, y: dx * 12 });
+    setGlare({ x: px, y: py, opacity: 0.15 });
+  };
+
+  const handlePointerLeave = () => {
+    setRotate({ x: 0, y: 0 });
+    setGlare((g) => ({ ...g, opacity: 0 }));
   };
 
   const current = CERTIFICATES[currentIndex];
@@ -69,27 +91,45 @@ export function Certificates() {
         <Reveal variant="zoom">
           <div className="relative border border-[var(--line)] rounded-2xl bg-[var(--bg2)] overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] items-center">
-              {/* Preview Image with Modal Trigger */}
-              <button
-                type="button"
-                onClick={() => setActiveCert(current)}
-                className="group relative w-full aspect-[16/10] bg-[var(--bg)] border-b lg:border-b-0 lg:border-r border-[var(--line)] overflow-hidden cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
-                aria-label={`Lihat ukuran penuh ${current.title}`}
-              >
-                <Image
-                  src={current.image}
-                  alt={current.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 650px"
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                  priority
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                  <span className="px-3.5 py-1.5 rounded-full bg-[var(--bg)]/95 border border-[var(--line)] text-xs font-mono text-[var(--fg)]">
-                    Klik untuk memperbesar
-                  </span>
-                </div>
-              </button>
+              {/* Preview Image with 3D Tilt Effect */}
+              <div className="p-4 sm:p-6 lg:p-8 flex items-center justify-center [perspective:1000px] border-b lg:border-b-0 lg:border-r border-[var(--line)]">
+                <button
+                  ref={cardRef}
+                  type="button"
+                  onClick={() => setActiveCert(current)}
+                  onPointerMove={handlePointerMove}
+                  onPointerLeave={handlePointerLeave}
+                  style={{
+                    transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+                    transition: rotate.x === 0 ? "transform 0.5s ease" : "transform 0.08s ease-out",
+                  }}
+                  className="group relative w-full aspect-[16/10] bg-[var(--bg)] rounded-xl border border-[var(--line)] overflow-hidden cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] will-change-transform [transform-style:preserve-3d]"
+                  aria-label={`Lihat ukuran penuh ${current.title}`}
+                >
+                  <Image
+                    src={current.image}
+                    alt={current.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 650px"
+                    className="object-cover object-center pointer-events-none"
+                    priority
+                  />
+                  {/* Dynamic Specular Glare */}
+                  <div
+                    style={{
+                      background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,0.4) 0%, transparent 60%)`,
+                      opacity: glare.opacity,
+                    }}
+                    className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                    aria-hidden="true"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                    <span className="px-3.5 py-1.5 rounded-full bg-[var(--bg)]/95 border border-[var(--line)] text-xs font-mono text-[var(--fg)]">
+                      Klik untuk memperbesar
+                    </span>
+                  </div>
+                </button>
+              </div>
 
               {/* Certificate Details */}
               <div className="p-6 sm:p-8 flex flex-col justify-between h-full gap-6">
