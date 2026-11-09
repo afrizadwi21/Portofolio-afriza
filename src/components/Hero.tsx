@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { ArrowRight, Mail } from "lucide-react";
 import { ParticleField } from "./ParticleField";
 import { Reveal } from "./Reveal";
+import { CodePlayground } from "./CodePlayground";
 import { PROFILE_DATA } from "../lib/data";
 
 export function Hero() {
@@ -110,36 +111,9 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Small Terminal code card */}
+        {/* Interactive Terminal code card */}
         <Reveal delayMs={280} variant="zoom">
-          <div className="mono bg-[var(--bg2)] border border-[var(--line)] rounded-2xl overflow-hidden transform lg:rotate-1 transition-transform duration-500 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2 px-4 py-3.5 border-b border-[var(--line)] text-[11px] text-[var(--mut)]">
-              <span className="w-2.5 h-2.5 rounded-full bg-[var(--line)]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[var(--line)]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[var(--line)]" />
-              <span className="ml-auto">afriza.ts</span>
-            </div>
-            <div className="p-5 text-[13px] leading-[1.9] text-[var(--fg)]">
-              <span className="text-[var(--mut)]">{"// who am i"}</span>
-              <br />
-              <span className="text-[var(--blue)]">const</span> dev = &#123;
-              <br />
-              &nbsp;&nbsp;name: <span className="text-[var(--acc)]">&quot;{PROFILE_DATA.name}&quot;</span>,
-              <br />
-              &nbsp;&nbsp;role: <span className="text-[var(--acc)]">&quot;Web Developer Student&quot;</span>,
-              <br />
-              &nbsp;&nbsp;school: <span className="text-[var(--acc)]">&quot;SMKN 4 Padalarang&quot;</span>,
-              <br />
-              &nbsp;&nbsp;learning: [<span className="text-[var(--acc)]">&quot;Next.js&quot;</span>, <span className="text-[var(--acc)]">&quot;Go&quot;</span>, <span className="text-[var(--acc)]">&quot;Docker&quot;</span>],
-              <br />
-              &nbsp;&nbsp;goal: <span className="text-[var(--acc)]">&quot;Full-Stack&quot;</span>
-              <br />
-              &#125;;
-              <br />
-              <span className="text-[var(--mut)]">&gt;</span>{" "}
-              <span className="inline-block w-2 h-[15px] bg-[var(--acc)] align-middle animate-pulse" />
-            </div>
-          </div>
+          <CodePlayground />
         </Reveal>
       </div>
     </section>

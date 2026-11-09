@@ -79,7 +79,7 @@ export function CodePlayground() {
       />
 
       <div className="border-t border-[var(--line)] bg-[var(--bg)]/60 px-4 py-3 text-[12px] leading-[1.6]">
-        <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-[var(--mut)] mb-1.5">
+        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.06em] text-[var(--mut)] mb-1.5">
           <span>Output Console</span>
           <span className={result.error ? "text-red-400" : "text-[var(--acc)]"}>{result.error ? "Error" : "Live"}</span>
         </div>
