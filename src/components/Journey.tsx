@@ -28,12 +28,6 @@ export function Journey() {
 
   return (
     <div className="pt-24 pb-12">
-      <Reveal>
-        <div className="flex items-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
-          04 — Journey
-        </div>
-      </Reveal>
-
       <TitleReveal text="The path so far." className="mb-14" />
 
       <div ref={containerRef} className="relative max-w-[760px] ml-1">

@@ -22,12 +22,6 @@ export function Projects({ onSelectProject }: ProjectsProps) {
   return (
     <section id="projects" className="py-28 relative">
       <div className="max-w-[1180px] mx-auto px-6">
-        <Reveal>
-          <div className="flex items-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
-            02 — Featured Projects
-          </div>
-        </Reveal>
-
         <TitleReveal text="Things I’ve been building." className="mb-8" />
 
         {/* Filter categories */}

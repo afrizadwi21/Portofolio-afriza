@@ -1,19 +1,13 @@
 "use client";
 
 import React from "react";
-import { Reveal, TitleReveal } from "./Reveal";
+import { TitleReveal } from "./Reveal";
 import { TECH_LANES } from "../lib/data";
 import { TechIcon } from "../lib/icons";
 
 export function TechMarquee() {
   return (
     <div className="pt-24 pb-12">
-      <Reveal>
-        <div className="flex items-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
-          03 — Tech Stack
-        </div>
-      </Reveal>
-
       <TitleReveal text="Tools I work with." className="mb-12" />
 
       {/* Full width marquee lanes container */}

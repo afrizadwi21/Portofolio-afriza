@@ -14,12 +14,6 @@ export function About() {
       <div className="max-w-[1180px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-[70px] items-start">
         {/* Left column: Heading, Quote, and Oval Masked Photo */}
         <div>
-          <Reveal>
-            <div className="flex items-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
-              01 — About
-            </div>
-          </Reveal>
-
           <TitleReveal text="Curious by default. Builder by habit." className="mb-6 max-w-[15ch]" />
 
           <Reveal delayMs={100} variant="left">
@@ -46,7 +40,7 @@ export function About() {
               {/* Organic oval image mask fading cleanly into background without box or border */}
               <div className="relative w-full h-full z-10 [mask-image:radial-gradient(ellipse_66%_70%_at_50%_44%,#000_56%,transparent_100%)]">
                 <Image
-                  src="/foto.jpg"
+                  src="/Foto.png"
                   alt={`Foto ${PROFILE_DATA.name}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 360px"

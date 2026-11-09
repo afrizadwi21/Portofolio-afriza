@@ -16,12 +16,6 @@ export function Contact() {
       />
 
       <div className="max-w-[1180px] mx-auto px-6 relative z-10">
-        <Reveal>
-          <div className="flex items-center justify-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
-            05 — Contact
-          </div>
-        </Reveal>
-
         <TitleReveal
           text="Have an idea? Let’s build something meaningful."
           highlightWord="meaningful."
