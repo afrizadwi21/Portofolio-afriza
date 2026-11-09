@@ -39,22 +39,22 @@ export function About() {
 
               {/* Portrait cutout fading smoothly at the bottom into the surface */}
               <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]">
-                {/* Dark mode portrait */}
+                {/* Dark mode portrait (default / [data-theme="dark"]) */}
                 <Image
                   src="/Foto.png"
                   alt={`Foto ${PROFILE_DATA.name}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 360px"
-                  className="object-cover object-top dark:block hidden"
+                  className="object-cover object-top block [html[data-theme='light']_&]:hidden"
                   priority
                 />
-                {/* Light mode portrait: kemeja putih */}
+                {/* Light mode portrait: kemeja putih ([data-theme="light"]) */}
                 <Image
                   src="/KemejaPutih.png"
                   alt={`Foto ${PROFILE_DATA.name} (Kemeja Putih)`}
                   fill
                   sizes="(max-width: 768px) 100vw, 360px"
-                  className="object-cover object-top dark:hidden block"
+                  className="object-cover object-top hidden [html[data-theme='light']_&]:block"
                   priority
                 />
               </div>
