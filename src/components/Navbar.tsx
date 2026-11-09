@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -44,13 +45,19 @@ export function Navbar() {
       <div className="max-w-[1180px] mx-auto px-6 h-[68px] flex items-center justify-between">
         <Link
           href="#home"
-          className="font-bold tracking-[0.18em] text-[15px] flex items-center gap-2 hover:opacity-90 transition-opacity"
+          className="font-bold tracking-[0.16em] text-[15px] flex items-center gap-2.5 hover:opacity-90 transition-opacity"
         >
-          <span
-            className="w-[9px] h-[9px] rounded-full bg-[var(--acc)] shadow-[0_0_14px_var(--acc)]"
-            aria-hidden="true"
-          />
-          AFRIZA
+          <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[var(--line)] bg-[var(--bg2)] flex items-center justify-center shrink-0">
+            <Image
+              src="/Logotitle.png"
+              alt="Logo Afriza"
+              fill
+              sizes="28px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <span>AFRIZA</span>
         </Link>
 
         {/* Desktop Links */}

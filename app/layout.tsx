@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: "Afriza — Web Developer Portfolio",
   description:
     "Portfolio of M. Afriza Dwi I, a Web Developer Student & Aspiring Full-Stack Developer at SMK Negeri 4 Padalarang.",
+  icons: {
+    icon: "/Logotitle.png",
+    shortcut: "/Logotitle.png",
+    apple: "/Logotitle.png",
+  },
 };
 
 export default function RootLayout({

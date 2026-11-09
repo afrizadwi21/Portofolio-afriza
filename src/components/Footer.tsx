@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUp, Mail } from "lucide-react";
 import { PROFILE_DATA } from "../lib/data";
 import { TechIcon, LinkedInIcon } from "../lib/icons";
@@ -16,13 +17,18 @@ export function Footer() {
       <div className="max-w-[1180px] mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-sm text-[var(--mut)]">
         <Link
           href="#home"
-          className="font-bold tracking-[0.18em] text-[15px] flex items-center gap-2 text-[var(--fg)] hover:opacity-90 transition-opacity"
+          className="font-bold tracking-[0.16em] text-[15px] flex items-center gap-2.5 text-[var(--fg)] hover:opacity-90 transition-opacity"
         >
-          <span
-            className="w-[9px] h-[9px] rounded-full bg-[var(--acc)] shadow-[0_0_14px_var(--acc)]"
-            aria-hidden="true"
-          />
-          AFRIZA
+          <div className="relative w-6 h-6 rounded-md overflow-hidden border border-[var(--line)] bg-[var(--bg2)] flex items-center justify-center shrink-0">
+            <Image
+              src="/Logotitle.png"
+              alt="Logo Afriza"
+              fill
+              sizes="24px"
+              className="object-cover"
+            />
+          </div>
+          <span>AFRIZA</span>
         </Link>
 
         <div>© 2026 {PROFILE_DATA.name}</div>
