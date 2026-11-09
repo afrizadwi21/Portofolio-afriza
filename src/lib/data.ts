@@ -177,19 +177,19 @@ export const CERTIFICATES: CertificateItem[] = [
   {
     id: "best-capstone",
     title: "Top 15 Best Capstone Project",
-    issuer: "Coding Camp 2026",
+    issuer: "Coding Camp 2026 (DBS Foundation)",
     credentialId: "CFS085D6Y129",
     year: "2026",
     image: "/cert-capstone.jpg",
     category: "Award & Achievement",
     description:
-      "Penghargaan Top 15 Best Capstone atas kontribusi rekayasa antarmuka dan integrasi data frontend pada proyek KelasKu LMS.",
+      "Penghargaan Top 15 Best Capstone Project atas kontribusi frontend dan integrasi REST API platform KelasKu LMS.",
     verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
   },
   {
     id: "coding-camp-completion",
     title: "Certificate of Completion — Coding Camp",
-    issuer: "Coding Camp 2026",
+    issuer: "Coding Camp 2026 (DBS Foundation)",
     credentialId: "CFS085D6Y129",
     year: "2026",
     image: "/cert-completion.jpg",
@@ -197,6 +197,54 @@ export const CERTIFICATES: CertificateItem[] = [
     description:
       "Kelulusan intensif program pengembangan web modern dengan penguasaan standar industri rekayasa software dan kolaborasi tim.",
     verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
+  },
+  {
+    id: "dicoding-logic",
+    title: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
+    issuer: "Dicoding Indonesia",
+    credentialId: "98XWO9GKLZM3",
+    year: "2026",
+    image: "/cert-98XWO9GKLZM3.png",
+    category: "Computer Science & Logic",
+    description:
+      "Penguasaan logika dasar pemrograman, gerbang logika, algoritma problem-solving, dan computational thinking.",
+    verifyUrl: "https://www.dicoding.com/certificates/98XWO9GKLZM3",
+  },
+  {
+    id: "dicoding-software-dev",
+    title: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
+    issuer: "Dicoding Indonesia",
+    credentialId: "72ZDKLQDVPYW",
+    year: "2026",
+    image: "/cert-72ZDKLQDVPYW.png",
+    category: "Software Engineering",
+    description:
+      "Tahapan rekayasa perangkat lunak dari analisis kebutuhan, perancangan arsitektur, implementasi kode, modifikasi, hingga dokumentasi.",
+    verifyUrl: "https://www.dicoding.com/certificates/72ZDKLQDVPYW",
+  },
+  {
+    id: "dicoding-ai",
+    title: "Belajar Dasar AI (Artificial Intelligence)",
+    issuer: "Dicoding Indonesia",
+    credentialId: "EYX4KKY95PDL",
+    year: "2025",
+    image: "/cert-EYX4KKY95PDL.png",
+    category: "Artificial Intelligence",
+    description:
+      "Konsep fundamental Artificial Intelligence, persiapan dataset, prinsip dasar Machine Learning, dan pengantar Deep Learning.",
+    verifyUrl: "https://www.dicoding.com/certificates/EYX4KKY95PDL",
+  },
+  {
+    id: "dicoding-financial-literacy",
+    title: "Introduction to Financial Literacy",
+    issuer: "Dicoding Indonesia · Coding Camp DBS Foundation",
+    credentialId: "ERZR2O30QPYV",
+    year: "2025",
+    image: "/cert-ERZR2O30QPYV.png",
+    category: "Professional Development",
+    description:
+      "Pelatihan literasi finansial, tata kelola keuangan proyek, dan perencanaan keberlanjutan ekonomi dalam ekosistem digital.",
+    verifyUrl: "https://www.dicoding.com/certificates/ERZR2O30QPYV",
   },
 ];
 
