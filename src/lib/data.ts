@@ -1,3 +1,15 @@
+export interface CertificateItem {
+  id: string;
+  title: string;
+  issuer: string;
+  credentialId: string;
+  year: string;
+  image: string;
+  category: string;
+  description: string;
+  verifyUrl: string;
+}
+
 export interface ProjectItem {
   id: string;
   name: string;
@@ -158,6 +170,33 @@ export const TECH_LANES: TechLane[] = [
     title: "Tools & DevOps",
     speedSec: 32,
     items: ["Git", "GitHub", "Docker", "Postman", "Linux", "Vercel"],
+  },
+];
+
+export const CERTIFICATES: CertificateItem[] = [
+  {
+    id: "best-capstone",
+    title: "Top 15 Best Capstone Project",
+    issuer: "Coding Camp 2026",
+    credentialId: "CFS085D6Y129",
+    year: "2026",
+    image: "/cert-capstone.jpg",
+    category: "Award & Achievement",
+    description:
+      "Penghargaan Top 15 Best Capstone atas kontribusi rekayasa antarmuka dan integrasi data frontend pada proyek KelasKu LMS.",
+    verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
+  },
+  {
+    id: "coding-camp-completion",
+    title: "Certificate of Completion — Coding Camp",
+    issuer: "Coding Camp 2026",
+    credentialId: "CFS085D6Y129",
+    year: "2026",
+    image: "/cert-completion.jpg",
+    category: "Professional Training",
+    description:
+      "Kelulusan intensif program pengembangan web modern dengan penguasaan standar industri rekayasa software dan kolaborasi tim.",
+    verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
   },
 ];
 
