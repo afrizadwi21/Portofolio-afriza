@@ -58,33 +58,17 @@ export function Projects({ onSelectProject }: ProjectsProps) {
               >
                 {/* Mini structured domain preview */}
                 <div className="h-[128px] p-4 flex items-end relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_16%,transparent),transparent_65%),var(--glass)] border-b border-[var(--line)]">
-                  {project.kind === "bars" ? (
-                    <div className="w-full space-y-1.5 font-mono text-[11px]">
-                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span className="text-[var(--fg)]">INV-204 · Hub Dispatch</span>
-                        <span className="ml-auto text-[var(--mut)]">B2B</span>
-                      </div>
-                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span className="text-[var(--fg)]">Stock Sync · Regional</span>
-                        <span className="ml-auto text-[var(--mut)]">queued</span>
-                      </div>
+                  <div className="w-full space-y-1.5 font-mono text-[11px]">
+                    <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
+                      <span className="text-[var(--fg)] truncate">{project.previewCode}</span>
+                      <span className="ml-auto text-[var(--mut)] text-[10px] shrink-0 uppercase">{project.type}</span>
                     </div>
-                  ) : (
-                    <div className="w-full space-y-1.5 font-mono text-[11px]">
-                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span className="text-[var(--fg)]">Order #0001</span>
-                        <span className="ml-auto text-[var(--mut)]">res.partner</span>
-                      </div>
-                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span className="text-[var(--fg)]">Order #0002</span>
-                        <span className="ml-auto text-[var(--mut)]">sale.order</span>
-                      </div>
+                    <div className="flex items-center gap-2 px-2 py-1 text-[10px] text-[var(--mut)]">
+                      <span>Stack:</span>
+                      <span className="text-[var(--fg)] truncate">{project.tags.slice(0, 3).join(" · ")}</span>
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* Card body */}

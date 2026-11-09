@@ -73,42 +73,102 @@ export function ProjectModal({
         {/* Visual Mockup Column */}
         <div className="min-h-[260px] md:min-h-[380px] flex items-center justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_18%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
           <div className="w-full max-w-[340px] bg-[var(--bg)] border border-[var(--line)] rounded-xl p-5 space-y-2.5 font-mono text-xs">
-            <div className="text-[11px] text-[var(--mut)] pb-1 border-b border-[var(--line)]">
-              {project.name} · {project.kind === "bars" ? "workflow" : "orders"}
+            <div className="text-[11px] text-[var(--mut)] pb-1 border-b border-[var(--line)] flex items-center justify-between">
+              <span>{project.name}</span>
+              <span className="text-[10px] uppercase tracking-wider text-[var(--project-color)]">{project.type}</span>
             </div>
 
-            {project.kind === "bars" ? (
-              <div className="space-y-2 pt-1">
-                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
-                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
-                  <span>Warehouse → Regional Hub</span>
-                  <span className="ml-auto text-[var(--mut)] text-[11px]">B2B</span>
+            {project.kind === "api" && (
+              <div className="space-y-2 pt-1 text-[11px]">
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--blue)] font-semibold">
+                    <span>PATCH /api/laundry/orders/status</span>
+                    <span className="text-emerald-400">200 OK</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">odoo.models: stock.quant · stock.lot</div>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
-                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
-                  <span>Batch Allocation #204</span>
-                  <span className="ml-auto text-[var(--mut)] text-[11px]">synced</span>
-                </div>
-                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
-                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
-                  <span>Distribution Manifest</span>
-                  <span className="ml-auto text-[var(--mut)] text-[11px]">active</span>
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--fg)]">
+                    <span>GET /docs (Scalar OpenAPI)</span>
+                    <span className="text-[var(--blue)]">Active</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Session auth & multi-batch tracking</div>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-2 pt-1">
-                {[1, 2, 3].map((orderNum) => (
-                  <div
-                    key={orderNum}
-                    className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] text-xs"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
-                    <span>Order #000{orderNum}</span>
-                    <span className="ml-auto text-[var(--mut)] text-[11px]">sale.order</span>
+            )}
+
+            {project.kind === "lms" && (
+              <div className="space-y-2 pt-1 text-[11px]">
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-sky-400 font-semibold">
+                    <span>POST /api/attendance/checkin</span>
+                    <span className="text-emerald-400">Recorded</span>
                   </div>
-                ))}
-                <div className="font-mono text-[11px] text-[var(--blue)] pt-2">
-                  GET /api/orders · 200 OK
+                  <div className="text-[var(--mut)] text-[10px]">Student ID verification & timestamp</div>
+                </div>
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--fg)]">
+                    <span>Top 15 Capstone Coding Camp</span>
+                    <span className="text-sky-400">Winner</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">React.js + Express.js fullstack</div>
+                </div>
+              </div>
+            )}
+
+            {project.kind === "pos" && (
+              <div className="space-y-2 pt-1 text-[11px]">
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-red-400 font-semibold">
+                    <span>Dynamic QRIS Payment</span>
+                    <span className="text-amber-400">03:00</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Auto-cancel countdown & order status</div>
+                </div>
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--fg)]">
+                    <span>Pre-Order & Order Tracker</span>
+                    <span className="text-emerald-400">Synced</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Customer phone lookup & admin ops</div>
+                </div>
+              </div>
+            )}
+
+            {project.kind === "school" && (
+              <div className="space-y-2 pt-1 text-[11px]">
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-purple-400 font-semibold">
+                    <span>Laravel Multi-Role Auth</span>
+                    <span className="text-emerald-400">Session OK</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Admin · Guru · Siswa RBAC</div>
+                </div>
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--fg)]">
+                    <span>Sistem Informasi Jurusan</span>
+                    <span className="text-purple-400">SMKN 4</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">MySQL + Eloquent ORM + Tailwind</div>
+                </div>
+              </div>
+            )}
+
+            {project.kind === "saas" && (
+              <div className="space-y-2 pt-1 text-[11px]">
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--acc)] font-semibold">
+                    <span>Regional Warehouse Hub</span>
+                    <span className="text-emerald-400">Active</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Batch allocation & inventory movement</div>
+                </div>
+                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
+                  <div className="flex items-center justify-between text-[var(--fg)]">
+                    <span>B2B Distribution Manifest</span>
+                    <span className="text-[var(--acc)]">Architecture</span>
+                  </div>
+                  <div className="text-[var(--mut)] text-[10px]">Multi-channel supply chain flow</div>
                 </div>
               </div>
             )}
@@ -158,12 +218,19 @@ export function ProjectModal({
           <div className="pt-6 mt-6 border-t border-[var(--line)] flex flex-wrap items-center gap-3">
             <a
               href={project.liveDemoUrl || "#"}
+              target={project.liveDemoUrl && project.liveDemoUrl !== "#" ? "_blank" : undefined}
+              rel={project.liveDemoUrl && project.liveDemoUrl !== "#" ? "noopener noreferrer" : undefined}
               onClick={(e) => {
-                if (project.liveDemoUrl === "#") e.preventDefault();
+                if (!project.liveDemoUrl || project.liveDemoUrl === "#") e.preventDefault();
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[var(--acc)] text-[var(--acc-ink)] transition-opacity duration-200 hover:opacity-90"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-opacity duration-200 ${
+                !project.liveDemoUrl || project.liveDemoUrl === "#"
+                  ? "bg-[var(--line)] text-[var(--mut)] cursor-not-allowed"
+                  : "bg-[var(--acc)] text-[var(--acc-ink)] hover:opacity-90"
+              }`}
             >
-              <ExternalLink className="w-3.5 h-3.5" /> Live demo
+              <ExternalLink className="w-3.5 h-3.5" />
+              {project.liveDemoLabel || "Live demo"}
             </a>
             <a
               href={project.githubUrl || "https://github.com/afrizadwi21"}
