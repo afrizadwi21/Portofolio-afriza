@@ -9,6 +9,7 @@ import { Projects } from "../src/components/Projects";
 import { ProjectModal } from "../src/components/ProjectModal";
 import { TechMarquee } from "../src/components/TechMarquee";
 import { Journey } from "../src/components/Journey";
+import { Certificates } from "../src/components/Certificates";
 import { Contact } from "../src/components/Contact";
 import { Footer } from "../src/components/Footer";
 import { ProjectItem, PROJECTS } from "../src/lib/data";
@@ -38,6 +39,8 @@ export default function Home() {
             <Journey />
           </div>
         </section>
+
+        <Certificates />
 
         <Contact />
       </main>
