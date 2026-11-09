@@ -65,12 +65,12 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                 {/* Mini thumbnail mock */}
                 <div className="h-[128px] p-4 flex items-end relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_20%,transparent),transparent_65%),var(--glass)]">
                   {project.kind === "bars" ? (
-                    <div className="flex items-end gap-2 h-14 w-full">
+                    <div className="flex items-end gap-2 h-[58px] w-full">
                       {[45, 78, 56, 92, 64, 84].map((h, i) => (
                         <i
                           key={i}
                           style={{ height: `${h}%` }}
-                          className="flex-1 rounded-t-sm bg-gradient-to-t from-[var(--project-color)] to-transparent opacity-85 transition-transform"
+                          className="flex-1 rounded-t-md rounded-b-[2px] bg-gradient-to-b from-[var(--project-color)] to-transparent origin-bottom animate-[barGrow_2.6s_ease-in-out_infinite_alternate] even:[animation-delay:-1s]"
                         />
                       ))}
                     </div>

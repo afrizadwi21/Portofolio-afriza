@@ -65,26 +65,26 @@ export function ProjectModal({
           type="button"
           onClick={onClose}
           aria-label="Tutup preview"
-          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-xl border border-[var(--line)] bg-[var(--glass)] text-[var(--fg)] flex items-center justify-center hover:rotate-90 hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] cursor-pointer"
+          className="absolute top-4 right-4 z-20 w-[42px] h-[42px] rounded-xl border border-[var(--line)] bg-[var(--glass)] text-[var(--fg)] flex items-center justify-center hover:rotate-90 hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] cursor-pointer"
         >
-          <X className="w-5 h-5" />
+          <X className="w-[18px] h-[18px]" />
         </button>
 
         {/* Visual Mockup Column */}
         <div className="min-h-[260px] md:min-h-[380px] flex items-center justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_22%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
           <div className="w-full max-w-[340px] bg-[var(--bg)] border border-[var(--line)] rounded-2xl p-5 shadow-2xl space-y-3">
             <div className="font-mono text-[11px] text-[var(--mut)]">
-              {project.name} · overview
+              {project.name} · {project.kind === "bars" ? "overview" : "orders"}
             </div>
 
             {project.kind === "bars" ? (
               <>
-                <div className="flex items-end gap-2 h-24 my-3">
+                <div className="flex items-end gap-2 h-24 my-3.5">
                   {[45, 78, 56, 92, 64, 84].map((h, i) => (
                     <i
                       key={i}
                       style={{ height: `${h}%` }}
-                      className="flex-1 rounded-t-sm bg-gradient-to-t from-[var(--project-color)] to-transparent opacity-90"
+                      className="flex-1 rounded-t-md rounded-b-[2px] bg-gradient-to-b from-[var(--project-color)] to-transparent origin-bottom animate-[barGrow_2.6s_ease-in-out_infinite_alternate] even:[animation-delay:-1s]"
                     />
                   ))}
                 </div>
@@ -187,10 +187,10 @@ export function ProjectModal({
                     (currentIndex - 1 + PROJECTS.length) % PROJECTS.length
                   )
                 }
-                aria-label="Proyek sebelumnya"
-                className="w-8 h-8 rounded-lg border border-[var(--line)] bg-[var(--glass)] flex items-center justify-center text-[var(--fg)] hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-colors cursor-pointer"
+                aria-label="Sebelumnya"
+                className="w-[42px] h-[42px] rounded-xl border border-[var(--line)] bg-[var(--glass)] flex items-center justify-center text-[var(--fg)] hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-colors cursor-pointer"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-[18px] h-[18px]" />
               </button>
               <span>
                 {currentIndex + 1} / {PROJECTS.length}
@@ -198,10 +198,10 @@ export function ProjectModal({
               <button
                 type="button"
                 onClick={() => onNavigate((currentIndex + 1) % PROJECTS.length)}
-                aria-label="Proyek berikutnya"
-                className="w-8 h-8 rounded-lg border border-[var(--line)] bg-[var(--glass)] flex items-center justify-center text-[var(--fg)] hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-colors cursor-pointer"
+                aria-label="Berikutnya"
+                className="w-[42px] h-[42px] rounded-xl border border-[var(--line)] bg-[var(--glass)] flex items-center justify-center text-[var(--fg)] hover:border-[var(--project-color)] hover:text-[var(--project-color)] transition-colors cursor-pointer"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-[18px] h-[18px]" />
               </button>
             </div>
           </div>

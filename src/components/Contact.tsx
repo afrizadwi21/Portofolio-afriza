@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowRight, Mail } from "lucide-react";
-import { Reveal } from "./Reveal";
+import { Reveal, TitleReveal } from "./Reveal";
 import { PROFILE_DATA } from "../lib/data";
 import { TechIcon, LinkedInIcon } from "../lib/icons";
 
@@ -11,23 +11,22 @@ export function Contact() {
     <section id="contact" className="py-28 text-center relative overflow-hidden">
       {/* Background ambient orb */}
       <div
-        className="orb absolute left-1/2 top-[30%] -translate-x-1/2 w-[520px] h-[520px] rounded-full blur-[100px] bg-[var(--acc)] opacity-[0.08] pointer-events-none"
+        className="orb absolute left-1/2 top-[30%] -translate-x-1/2 w-[520px] h-[520px] rounded-full blur-[90px] bg-[var(--acc)] opacity-[0.08] pointer-events-none animate-[floatOrb_14s_ease-in-out_infinite]"
         aria-hidden="true"
       />
 
       <div className="max-w-[1180px] mx-auto px-6 relative z-10">
         <Reveal>
-          <div className="flex items-center justify-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)] after:content-[''] after:w-7 after:h-[1px] after:bg-[var(--acc)]">
+          <div className="flex items-center justify-center gap-2.5 font-mono text-xs font-medium tracking-[0.14em] uppercase text-[var(--acc)] mb-5 before:content-[''] before:w-7 before:h-[1px] before:bg-[var(--acc)]">
             05 — Contact
           </div>
         </Reveal>
 
-        <Reveal delayMs={100}>
-          <h2 className="max-w-[14ch] mx-auto mb-6 font-semibold tracking-[-0.04em] text-[clamp(40px,7vw,92px)] leading-[1.02]">
-            Have an idea? Let’s build something{" "}
-            <em className="not-italic text-[var(--acc)]">meaningful.</em>
-          </h2>
-        </Reveal>
+        <TitleReveal
+          text="Have an idea? Let’s build something meaningful."
+          highlightWord="meaningful."
+          className="max-w-[14ch] mx-auto mb-6 !text-[clamp(40px,7vw,92px)] !leading-[1.02]"
+        />
 
         <Reveal delayMs={200}>
           <p className="max-w-[48ch] mx-auto mb-9 text-[var(--mut)] text-lg leading-relaxed">
