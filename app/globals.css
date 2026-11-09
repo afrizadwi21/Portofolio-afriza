@@ -64,24 +64,9 @@ body {
   font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
 @keyframes floatOrb {
   50% {
     transform: translate(-30px, 28px) scale(1.08);
-  }
-}
-
-@keyframes barGrow {
-  to {
-    transform: scaleY(0.72);
   }
 }
 
