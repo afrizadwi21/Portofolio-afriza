@@ -6,9 +6,11 @@ export interface ProjectItem {
   description: string;
   tags: string[];
   color: string;
-  kind: "bars" | "rows";
+  kind: "saas" | "api" | "pos" | "school" | "lms";
+  previewCode: string;
   highlights: string[];
   liveDemoUrl?: string;
+  liveDemoLabel?: string;
   githubUrl?: string;
 }
 
@@ -26,40 +28,107 @@ export interface JourneyStep {
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: "laundryflow",
+    name: "LaundryFlow",
+    type: "Backend",
+    category: "Backend · Odoo 20 ERP & REST API",
+    description:
+      "Arsitektur backend sistem manajemen laundry terintegrasi Odoo 20 dan PostgreSQL. Menyediakan REST API modern (terdokumentasi dengan Scalar OpenAPI) untuk inventaris multi-batch, kalkulasi harga order dinamis di server, validasi alur status pesanan, dan integrasi WhatsApp.",
+    tags: ["Python", "Odoo 20", "PostgreSQL", "REST API"],
+    color: "var(--blue)",
+    kind: "api",
+    previewCode: "PATCH /api/laundry/orders/status",
+    highlights: [
+      "REST API modern terdokumentasi Scalar OpenAPI (/docs)",
+      "Kalkulasi total harga & validasi dimensi (m²/kg/pcs) di backend",
+      "Stok real-time dari model stock.quant & tracking batch expired",
+      "Keamanan sesi Odoo (Role-based: Portal, Pegawai, Admin)",
+    ],
+    liveDemoUrl: "http://117.53.47.93:8069/docs#description/introduction",
+    liveDemoLabel: "API Docs (Scalar)",
+    githubUrl: "https://github.com/afrizadwi21",
+  },
+  {
+    id: "kelasku",
+    name: "KelasKu",
+    type: "Full-Stack",
+    category: "EdTech · Learning Management System",
+    description:
+      "Platform Learning Management System (LMS) modern untuk manajemen kelas, materi pembelajaran digital, presensi check-in/check-out siswa dengan ekspor laporan CSV, dan pemantauan progres akademik terstruktur. Terpilih sebagai Top 15 Best Capstone Project.",
+    tags: ["React.js", "Express.js", "Tailwind CSS", "REST API"],
+    color: "#38bdf8",
+    kind: "lms",
+    previewCode: "POST /api/attendance/checkin",
+    highlights: [
+      "Top 15 Best Capstone Project pada program Coding Camp",
+      "Modul absensi digital siswa dengan tracking jam masuk/pulang",
+      "Katalog materi interaktif dan pemantauan progres tugas",
+      "Integrasi full-stack responsif React.js + REST API Express.js",
+    ],
+    liveDemoUrl: "https://capstone-project-kelasku-omega.vercel.app/",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/akhdann12/Capstone-Project-Kelasku.git",
+  },
+  {
+    id: "pentol-mercon",
+    name: "Pentol Mercon Lava",
+    type: "Web App",
+    category: "F&B · E-Commerce & Point of Sale",
+    description:
+      "Aplikasi pemesanan dan katalog digital untuk UMKM kuliner Pentol Mercon Lava. Dilengkapi integrasi pembayaran QRIS dinamis dengan countdown timer otomatis, pelacakan riwayat pesanan (pre-order & direct order), serta dashboard operasional admin.",
+    tags: ["React 19", "Vite", "Tailwind CSS", "QRIS API"],
+    color: "#f87171",
+    kind: "pos",
+    previewCode: "POST /api/orders/qris",
+    highlights: [
+      "Sistem pemesanan pre-order & reguler langsung dari browser",
+      "Integrasi pembayaran QRIS otomatis dengan timer kedaluwarsa",
+      "Pengecekan riwayat status pesanan pelanggan via nomor HP",
+      "Dukungan dual-theme (dark/light) dan UI modern cepat",
+    ],
+    liveDemoUrl: "https://project-penjualan-pentol.vercel.app/",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/afrizadwi21",
+  },
+  {
+    id: "sis-pplg",
+    name: "Sistem Informasi PPLG",
+    type: "Full-Stack",
+    category: "School ERP · Sistem Akademik & Guru",
+    description:
+      "Sistem informasi manajemen sekolah dan portal akademik jurusan PPLG SMK Negeri 4 Padalarang. Menangani autentikasi berbasis peran (admin, guru, siswa), pengelolaan rekap nilai, data inventaris lab, dan manajemen jadwal kelas.",
+    tags: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
+    color: "#a855f7",
+    kind: "school",
+    previewCode: "POST /login -> Auth::attempt()",
+    highlights: [
+      "Autentikasi multi-role aman (Admin, Guru, Siswa)",
+      "Pengelolaan database terstruktur dengan Eloquent ORM & MySQL",
+      "Dashboard rekap nilai dan informasi kurikulum jurusan PPLG",
+      "Antarmuka modern terintegrasi SweetAlert2 dan Tailwind CSS",
+    ],
+    liveDemoUrl: "https://afrizadwi.pplgsmkn4.my.id/laravelAfriza/laravelAfriza/myapp/public/index.php/login",
+    liveDemoLabel: "Portal Login",
+    githubUrl: "https://github.com/afrizadwi21",
+  },
+  {
     id: "distribucore",
     name: "DistribuCore",
     type: "SaaS",
     category: "B2B SaaS · Distribution Management",
     description:
-      "A personal product project focused on business process and distribution management, a SaaS-style platform for organising how goods and operations move through a business.",
-    tags: ["B2B SaaS", "Business Process", "Stack: TBA"],
+      "Proyek perancangan platform B2B SaaS untuk tata kelola alur distribusi logistik, integrasi inventory antar-gudang, dan sinkronisasi rantai pasok multi-lokasi skala menengah ke atas.",
+    tags: ["B2B SaaS", "Business Process", "Architecture"],
     color: "var(--acc)",
-    kind: "bars",
+    kind: "saas",
+    previewCode: "Warehouse -> Hub -> Dispatch",
     highlights: [
-      "Product-focused build around distribution workflows",
-      "Technologies: to be filled in",
-      "Live demo: link coming soon",
+      "Fokus pada workflow rantai pasok dan alokasi batch logistik",
+      "Model domain distribusi terorganisir untuk efisiensi bisnis",
+      "Arsitektur modular siap integrasi multi-channel",
     ],
     liveDemoUrl: "#",
-    githubUrl: "https://github.com/afrizadwi21",
-  },
-  {
-    id: "laundryflow",
-    name: "LaundryFlow",
-    type: "Backend",
-    category: "Backend Development · Odoo Integration",
-    description:
-      "A laundry management backend with API development at its core: customer management, order management, and integrations built around Odoo.",
-    tags: ["Python", "Odoo", "PostgreSQL", "REST API"],
-    color: "var(--blue)",
-    kind: "rows",
-    highlights: [
-      "Backend architecture designed around Odoo",
-      "Customer management",
-      "Order management",
-      "Integrations through REST API",
-    ],
-    liveDemoUrl: "#",
+    liveDemoLabel: "Coming Soon",
     githubUrl: "https://github.com/afrizadwi21",
   },
 ];
@@ -78,12 +147,12 @@ export const TECH_LANES: TechLane[] = [
   {
     title: "Backend & Database",
     speedSec: 38,
-    items: ["Laravel", "Node.js", "Odoo", "PostgreSQL", "REST API"],
+    items: ["Node.js", "Express.js", "Laravel", "Odoo", "PostgreSQL", "MySQL"],
   },
   {
-    title: "Tools",
-    speedSec: 46,
-    items: ["Git", "GitHub", "Docker", "Figma", "VS Code"],
+    title: "Tools & DevOps",
+    speedSec: 32,
+    items: ["Git", "GitHub", "Docker", "Postman", "Linux", "Vercel"],
   },
 ];
 
@@ -92,31 +161,31 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     phase: "Foundation",
     title: "Software & Game Development",
     description:
-      "Started at SMK Negeri 4 Padalarang, building the fundamentals of programming and software design.",
+      "Memulai perjalanan teknis di SMK Negeri 4 Padalarang (jurusan PPLG/RPL), mempelajari dasar algoritma pemrograman, logika berorientasi objek, struktur data, dan rekayasa perangkat lunak.",
   },
   {
-    phase: "Exploration",
-    title: "Web development learning",
+    phase: "Expansion",
+    title: "Modern Web & Interface Craft",
     description:
-      "From HTML, CSS and JavaScript to modern frameworks and tooling.",
+      "Menguasai ekosistem web modern (TypeScript, React, Next.js, Tailwind CSS) dengan fokus pada antarmuka yang presisi, performa tinggi, dan aksesibilitas ramah pengguna.",
   },
   {
-    phase: "Depth",
-    title: "Backend development",
+    phase: "Architecture",
+    title: "Backend & ERP Engineering",
     description:
-      "Working with APIs, databases and Odoo-based systems.",
+      "Mendalami arsitektur sisi server: RESTful API, integrasi ERP Odoo 20, orkestrasi basis data PostgreSQL & MySQL, autentikasi sesi, serta validasi transaksi bisnis yang ketat.",
   },
   {
-    phase: "Practice",
-    title: "Internship & real-world projects",
+    phase: "Applied Work",
+    title: "Real Projects & Production Delivery",
     description:
-      "Applying skills to business-oriented applications outside the classroom.",
+      "Membangun dan merilis solusi digital nyata untuk UMKM dan sekolah (LaundryFlow, Pentol Mercon Lava, Portal PPLG Laravel, dan Capstone KelasKu Top 15 Best Project).",
   },
   {
-    phase: "Now",
-    title: "Full-stack focus",
+    phase: "Outlook",
+    title: "Full-Stack & Systems Focus",
     description:
-      "Leveling up with Next.js, TypeScript, Go and Docker.",
+      "Terus memperdalam keahlian end-to-end: arsitektur microservices terdistribusi, containerization dengan Docker, Go, serta pengembangan produk perangkat lunak bernilai tinggi.",
   },
 ];
 
@@ -130,7 +199,7 @@ export const PROFILE_DATA = {
   direction: "Full-Stack Development",
   headline: "Building Digital Experiences Through Code.",
   quote:
-    "“I build digital experiences, develop practical software solutions, and explore modern technologies to solve real-world problems.”",
+    "“Saya percaya bahwa perangkat lunak yang andal bermula dari arsitektur backend yang disiplin dan dieksekusi dengan antarmuka yang bersih serta fungsional.”",
   lead:
     "I’m Afriza, a developer passionate about building modern web applications, backend systems, and practical digital solutions.",
   email: "afriza.dwi21@gmail.com",
@@ -140,7 +209,7 @@ export const PROFILE_DATA = {
     "Web Development",
     "Backend Engineering",
     "API Development",
-    "AI-Powered Apps",
+    "ERP & Odoo Integrations",
     "SaaS Products",
   ],
 };
