@@ -199,6 +199,66 @@ export const CERTIFICATES: CertificateItem[] = [
     verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
   },
   {
+    id: "dicoding-react",
+    title: "Belajar Membuat Aplikasi Web dengan React",
+    issuer: "Dicoding Indonesia",
+    credentialId: "6RPN763W8X2M",
+    year: "2026",
+    image: "/cert-6RPN763W8X2M.png",
+    category: "Frontend Engineering",
+    description:
+      "Pengembangan aplikasi frontend berbasis komponen, props, event handling, state management, dan conditional rendering di React.",
+    verifyUrl: "https://www.dicoding.com/certificates/6RPN763W8X2M",
+  },
+  {
+    id: "dicoding-fe-pemula",
+    title: "Belajar Membuat Front-End Web untuk Pemula",
+    issuer: "Dicoding Indonesia",
+    credentialId: "NVP7N1EWVZR0",
+    year: "2026",
+    image: "/cert-NVP7N1EWVZR0.png",
+    category: "Frontend Engineering",
+    description:
+      "Manipulasi DOM lanjutan, Event handling, dan implementasi Web Storage API untuk fungsionalitas aplikasi web dinamis.",
+    verifyUrl: "https://www.dicoding.com/certificates/NVP7N1EWVZR0",
+  },
+  {
+    id: "dicoding-js",
+    title: "Belajar Dasar Pemrograman JavaScript",
+    issuer: "Dicoding Indonesia",
+    credentialId: "ERZR2QR82PYV",
+    year: "2026",
+    image: "/cert-ERZR2QR82PYV.png",
+    category: "Programming Language",
+    description:
+      "Fundamental JavaScript, sintaks & fitur ES6+, asynchronous programming, OOP, serta pengenalan automation testing.",
+    verifyUrl: "https://www.dicoding.com/certificates/ERZR2QR82PYV",
+  },
+  {
+    id: "dicoding-web-dasar",
+    title: "Belajar Dasar Pemrograman Web",
+    issuer: "Dicoding Indonesia",
+    credentialId: "RVZKGV63QXD5",
+    year: "2026",
+    image: "/cert-RVZKGV63QXD5.png",
+    category: "Web Development",
+    description:
+      "Fondasi dasar web development: struktur semantik HTML5, styling responsif CSS3, flexbox, dan teknik layout modern.",
+    verifyUrl: "https://www.dicoding.com/certificates/RVZKGV63QXD5",
+  },
+  {
+    id: "dicoding-cloud-genai",
+    title: "Belajar Dasar Cloud dan Gen AI di AWS",
+    issuer: "Dicoding Indonesia · AWS",
+    credentialId: "1OP8JKW0VPQK",
+    year: "2026",
+    image: "/cert-1OP8JKW0VPQK.png",
+    category: "Cloud & Gen AI",
+    description:
+      "Konsep arsitektur cloud computing di Amazon Web Services (AWS) serta implementasi praktis model Generative AI.",
+    verifyUrl: "https://www.dicoding.com/certificates/1OP8JKW0VPQK",
+  },
+  {
     id: "dicoding-logic",
     title: "Pengenalan ke Logika Pemrograman (Programming Logic 101)",
     issuer: "Dicoding Indonesia",
@@ -245,6 +305,42 @@ export const CERTIFICATES: CertificateItem[] = [
     description:
       "Pelatihan literasi finansial, tata kelola keuangan proyek, dan perencanaan keberlanjutan ekonomi dalam ekosistem digital.",
     verifyUrl: "https://www.dicoding.com/certificates/ERZR2O30QPYV",
+  },
+  {
+    id: "gamelab-phaser",
+    title: "Game 2D: Phaser Game Framework",
+    issuer: "GAMELAB.ID",
+    credentialId: "GL9096495761",
+    year: "2025",
+    image: "/cert-GL9096495761.png",
+    category: "Game Development",
+    description:
+      "Pengembangan game 2D berbasis JavaScript menggunakan Phaser framework, implementasi sprites, physics engine, dan collision detection (Nilai: 84).",
+    verifyUrl: "https://www.gamelab.id/certificate/GL9096495761",
+  },
+  {
+    id: "gamelab-js-gamedev",
+    title: "JavaScript untuk GameDev",
+    issuer: "GAMELAB.ID",
+    credentialId: "GL1331477952",
+    year: "2025",
+    image: "/cert-GL1331477952.png",
+    category: "Game Development",
+    description:
+      "Penerapan logika JavaScript khusus pengembangan game, game loops, event-driven user interaction, dan state management (Nilai: 92).",
+    verifyUrl: "https://www.gamelab.id/certificate/GL1331477952",
+  },
+  {
+    id: "gamelab-construct",
+    title: "Game Fundamental: Construct",
+    issuer: "GAMELAB.ID",
+    credentialId: "GL0875028007",
+    year: "2025",
+    image: "/cert-GL0875028007.png",
+    category: "Game Development",
+    description:
+      "Dasar perancangan mekanik permainan, level design, visual scripting, dan publikasi game interaktif (Nilai: 92).",
+    verifyUrl: "https://www.gamelab.id/certificate/GL0875028007",
   },
 ];
 
