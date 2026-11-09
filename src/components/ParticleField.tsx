@@ -65,11 +65,12 @@ export function ParticleField({
     const readThemeColors = () => {
       const styles = getComputedStyle(document.documentElement);
       const accVal = styles.getPropertyValue("--acc") || "#c6ff3d";
-      const fgVal = styles.getPropertyValue("--fg") || "#f4f5f2";
+      const isLight = resolvedTheme === "light";
+      const fgVal = isLight ? "#2a3b5c" : (styles.getPropertyValue("--fg") || "#f4f5f2");
       const accRgb = hexToRgb(accVal);
       const fgRgb = hexToRgb(fgVal);
-      const contrastMultiplier = resolvedTheme === "light" ? 2.1 : 1.25;
-      return { accRgb, fgRgb, contrastMultiplier };
+      const contrastMultiplier = isLight ? 2.6 : 1.25;
+      return { accRgb, fgRgb, contrastMultiplier, isLight };
     };
 
     const themeColors = readThemeColors();
