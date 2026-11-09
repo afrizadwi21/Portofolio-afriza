@@ -17,12 +17,12 @@ export function About() {
           <TitleReveal text="Curious by default. Builder by habit." className="mb-6 max-w-[15ch]" />
 
           <Reveal delayMs={100} variant="left">
-            <blockquote className="text-[clamp(22px,2.6vw,30px)] leading-[1.3] tracking-[-0.02em] pl-[22px] border-l-2 border-[var(--acc)] text-[var(--fg)] mt-8">
+            <blockquote className="text-[clamp(22px,2.6vw,30px)] leading-[1.3] tracking-[-0.02em] pl-[22px] border-l border-[var(--line)] text-[var(--fg)] mt-8">
               {PROFILE_DATA.quote}
             </blockquote>
           </Reveal>
 
-          {/* Oval Masked Photo with Particle Canvas, no border/box, fades seamlessly into background, no extra text */}
+          {/* Cutout Portrait with Particle Canvas & Seamless Bottom Fade */}
           <Reveal delayMs={200} variant="zoom">
             <figure
               ref={photoContainerRef}
@@ -37,8 +37,8 @@ export function About() {
                 className="-inset-y-[12%] -inset-x-[28%] !w-[156%] !h-[124%] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_55%,transparent_100%)]"
               />
 
-              {/* Organic oval image mask fading cleanly into background without box or border */}
-              <div className="relative w-full h-full z-10 [mask-image:radial-gradient(ellipse_66%_70%_at_50%_44%,#000_56%,transparent_100%)]">
+              {/* Portrait cutout fading smoothly at the bottom into the surface */}
+              <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]">
                 <Image
                   src="/Foto.png"
                   alt={`Foto ${PROFILE_DATA.name}`}
@@ -74,7 +74,7 @@ export function About() {
 
           {/* Quick Facts Grid */}
           <Reveal delayMs={350} variant="zoom">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-[var(--line)] border border-[var(--line)] rounded-[20px] overflow-hidden mt-9">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-[var(--line)] border border-[var(--line)] rounded-2xl overflow-hidden mt-9">
               <div className="bg-[var(--bg)] p-[22px]">
                 <small className="block text-[var(--mut)] font-mono text-[11px] tracking-[0.1em] uppercase mb-1.5 font-medium">
                   Education

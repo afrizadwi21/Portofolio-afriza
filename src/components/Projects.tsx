@@ -54,31 +54,34 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                 type="button"
                 onClick={() => onSelectProject(project)}
                 style={{ "--project-color": project.color } as React.CSSProperties}
-                className="group w-full text-left h-full flex flex-col border border-[var(--line)] rounded-[22px] bg-[var(--bg2)] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-[color-mix(in_srgb,var(--project-color)_55%,transparent)] hover:shadow-[0_20px_40px_-20px_color-mix(in_srgb,var(--project-color)_40%,transparent)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+                className="group w-full text-left h-full flex flex-col border border-[var(--line)] rounded-2xl bg-[var(--bg2)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--project-color)_55%,transparent)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
               >
-                {/* Mini thumbnail mock */}
-                <div className="h-[128px] p-4 flex items-end relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_20%,transparent),transparent_65%),var(--glass)]">
+                {/* Mini structured domain preview */}
+                <div className="h-[128px] p-4 flex items-end relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_16%,transparent),transparent_65%),var(--glass)] border-b border-[var(--line)]">
                   {project.kind === "bars" ? (
-                    <div className="flex items-end gap-2 h-[58px] w-full">
-                      {[45, 78, 56, 92, 64, 84].map((h, i) => (
-                        <i
-                          key={i}
-                          style={{ height: `${h}%` }}
-                          className="flex-1 rounded-t-md rounded-b-[2px] bg-gradient-to-b from-[var(--project-color)] to-transparent origin-bottom animate-[barGrow_2.6s_ease-in-out_infinite_alternate] even:[animation-delay:-1s]"
-                        />
-                      ))}
+                    <div className="w-full space-y-1.5 font-mono text-[11px]">
+                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
+                        <span className="text-[var(--fg)]">INV-204 · Hub Dispatch</span>
+                        <span className="ml-auto text-[var(--mut)]">B2B</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
+                        <span className="text-[var(--fg)]">Stock Sync · Regional</span>
+                        <span className="ml-auto text-[var(--mut)]">queued</span>
+                      </div>
                     </div>
                   ) : (
-                    <div className="w-full space-y-1.5 text-xs">
-                      <div className="flex items-center gap-2 p-1.5 rounded-md border border-[var(--line)] bg-[var(--bg)] text-[11px]">
+                    <div className="w-full space-y-1.5 font-mono text-[11px]">
+                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span>Order #0001</span>
-                        <span className="ml-auto text-[var(--mut)]">customer</span>
+                        <span className="text-[var(--fg)]">Order #0001</span>
+                        <span className="ml-auto text-[var(--mut)]">res.partner</span>
                       </div>
-                      <div className="flex items-center gap-2 p-1.5 rounded-md border border-[var(--line)] bg-[var(--bg)] text-[11px]">
+                      <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                        <span>Order #0002</span>
-                        <span className="ml-auto text-[var(--mut)]">customer</span>
+                        <span className="text-[var(--fg)]">Order #0002</span>
+                        <span className="ml-auto text-[var(--mut)]">sale.order</span>
                       </div>
                     </div>
                   )}
@@ -120,7 +123,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
               href="https://github.com/afrizadwi21"
               target="_blank"
               rel="noopener noreferrer"
-              className="group h-full min-h-[240px] flex flex-col items-center justify-center gap-3 p-6 rounded-[22px] border border-dashed border-[var(--line)] bg-transparent text-[var(--mut)] text-center transition-all duration-300 hover:text-[var(--acc)] hover:border-[var(--acc)] hover:bg-[var(--glass)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+              className="group h-full min-h-[240px] flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border border-dashed border-[var(--line)] bg-transparent text-[var(--mut)] text-center transition-all duration-300 hover:text-[var(--acc)] hover:border-[var(--acc)] hover:bg-[var(--glass)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
             >
               <span className="w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <TechIcon name="GitHub" />

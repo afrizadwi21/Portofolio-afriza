@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { ProjectItem, PROJECTS } from "../lib/data";
 import { TechIcon } from "../lib/icons";
 
@@ -58,7 +58,7 @@ export function ProjectModal({
     >
       <div
         style={{ "--project-color": project.color } as React.CSSProperties}
-        className="relative w-full max-w-[920px] max-h-[90vh] overflow-y-auto border border-[var(--line)] rounded-[26px] bg-[var(--bg2)] shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] grid grid-cols-1 md:grid-cols-2"
+        className="relative w-full max-w-[920px] max-h-[90vh] overflow-y-auto border border-[var(--line)] rounded-2xl bg-[var(--bg2)] grid grid-cols-1 md:grid-cols-2"
       >
         {/* Close Button */}
         <button
@@ -71,45 +71,44 @@ export function ProjectModal({
         </button>
 
         {/* Visual Mockup Column */}
-        <div className="min-h-[260px] md:min-h-[380px] flex items-center justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_22%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
-          <div className="w-full max-w-[340px] bg-[var(--bg)] border border-[var(--line)] rounded-2xl p-5 shadow-2xl space-y-3">
-            <div className="font-mono text-[11px] text-[var(--mut)]">
-              {project.name} · {project.kind === "bars" ? "overview" : "orders"}
+        <div className="min-h-[260px] md:min-h-[380px] flex items-center justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_18%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
+          <div className="w-full max-w-[340px] bg-[var(--bg)] border border-[var(--line)] rounded-xl p-5 space-y-2.5 font-mono text-xs">
+            <div className="text-[11px] text-[var(--mut)] pb-1 border-b border-[var(--line)]">
+              {project.name} · {project.kind === "bars" ? "workflow" : "orders"}
             </div>
 
             {project.kind === "bars" ? (
-              <>
-                <div className="flex items-end gap-2 h-24 my-3.5">
-                  {[45, 78, 56, 92, 64, 84].map((h, i) => (
-                    <i
-                      key={i}
-                      style={{ height: `${h}%` }}
-                      className="flex-1 rounded-t-md rounded-b-[2px] bg-gradient-to-b from-[var(--project-color)] to-transparent origin-bottom animate-[barGrow_2.6s_ease-in-out_infinite_alternate] even:[animation-delay:-1s]"
-                    />
-                  ))}
-                </div>
-                <div className="h-2 rounded bg-[var(--line)] w-4/5" />
-                <div className="h-2 rounded bg-[var(--line)] w-1/2" />
-                <div className="flex items-center gap-2 p-2 border border-[var(--line)] rounded-lg text-xs mt-3">
+              <div className="space-y-2 pt-1">
+                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
                   <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
-                  <span>Distribution flow</span>
+                  <span>Warehouse → Regional Hub</span>
+                  <span className="ml-auto text-[var(--mut)] text-[11px]">B2B</span>
+                </div>
+                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
+                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
+                  <span>Batch Allocation #204</span>
+                  <span className="ml-auto text-[var(--mut)] text-[11px]">synced</span>
+                </div>
+                <div className="flex items-center gap-2 p-2.5 border border-[var(--line)] rounded-lg bg-[var(--bg2)]">
+                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
+                  <span>Distribution Manifest</span>
                   <span className="ml-auto text-[var(--mut)] text-[11px]">active</span>
                 </div>
-              </>
+              </div>
             ) : (
               <div className="space-y-2 pt-1">
                 {[1, 2, 3].map((orderNum) => (
                   <div
                     key={orderNum}
-                    className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg2)] text-xs"
+                    className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] text-xs"
                   >
                     <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
                     <span>Order #000{orderNum}</span>
-                    <span className="ml-auto text-[var(--mut)] text-[11px]">customer</span>
+                    <span className="ml-auto text-[var(--mut)] text-[11px]">sale.order</span>
                   </div>
                 ))}
                 <div className="font-mono text-[11px] text-[var(--blue)] pt-2">
-                  GET /api/orders → 200 OK
+                  GET /api/orders · 200 OK
                 </div>
               </div>
             )}
@@ -148,7 +147,7 @@ export function ProjectModal({
                   key={i}
                   className="py-2.5 text-[var(--mut)] flex items-center gap-2.5"
                 >
-                  <span className="text-[var(--project-color)] font-bold">→</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[var(--project-color)] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
