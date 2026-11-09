@@ -131,7 +131,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
               <span className="w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <TechIcon name="GitHub" />
               </span>
-              <span className="text-sm font-medium tracking-wide">
+              <span className="text-sm font-medium">
                 Lebih banyak proyek di GitHub
               </span>
             </a>

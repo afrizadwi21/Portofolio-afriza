@@ -106,24 +106,24 @@ export function TitleReveal({
           highlightWord &&
           word.toLowerCase().includes(highlightWord.toLowerCase());
         return (
-          <span
-            key={i}
-            className="inline-block overflow-hidden align-top py-0.5 mr-[0.25em]"
-          >
-            <span
-              style={{
-                transform: isVisible
-                  ? "none"
-                  : "translateY(112%) rotate(5deg)",
-                transformOrigin: "left bottom",
-                transition: `transform 0.9s cubic-bezier(.2,.8,.2,1) ${i * 70}ms`,
-                color: isHighlight ? accentColor : undefined,
-              }}
-              className="inline-block motion-reduce:!transform-none"
-            >
-              {word}
+          <React.Fragment key={i}>
+            <span className="inline-block overflow-hidden align-top py-0.5">
+              <span
+                style={{
+                  transform: isVisible
+                    ? "none"
+                    : "translateY(112%) rotate(5deg)",
+                  transformOrigin: "left bottom",
+                  transition: `transform 0.9s cubic-bezier(.2,.8,.2,1) ${i * 70}ms`,
+                  color: isHighlight ? accentColor : undefined,
+                }}
+                className="inline-block motion-reduce:!transform-none"
+              >
+                {word}
+              </span>
             </span>
-          </span>
+            {i < words.length - 1 ? " " : null}
+          </React.Fragment>
         );
       })}
     </h2>

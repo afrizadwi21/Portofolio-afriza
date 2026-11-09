@@ -65,7 +65,7 @@ export function Hero() {
 
       {/* Cursor interaction hint */}
       <div
-        className="hint mono absolute left-0 right-0 bottom-6 text-center text-xs text-[var(--mut)] tracking-[0.08em] z-10 pointer-events-none px-6"
+        className="hint mono absolute left-0 right-0 bottom-6 text-center text-xs text-[var(--mut)] z-10 pointer-events-none px-6"
         aria-hidden="true"
       >
         <b className="text-[var(--acc)] font-medium">↳</b> gerakkan kursor atau sentuh layar
@@ -92,7 +92,7 @@ export function Hero() {
 
           {/* Headline */}
           <Reveal delayMs={140}>
-            <h1 className="font-semibold text-[clamp(46px,8.2vw,112px)] leading-[0.94] tracking-[-0.05em] text-balance">
+            <h1 className="font-semibold text-[clamp(38px,5.4vw,72px)] leading-[1.02] tracking-[-0.04em] text-balance">
               Building Digital <span className="text-[var(--mut)] block">Experiences</span> Through{" "}
               <em className="not-italic text-[var(--acc)]">Code.</em>
             </h1>
