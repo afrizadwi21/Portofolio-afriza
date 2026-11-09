@@ -133,9 +133,9 @@ export const PROFILE_DATA = {
     "“I build digital experiences, develop practical software solutions, and explore modern technologies to solve real-world problems.”",
   lead:
     "I’m Afriza, a developer passionate about building modern web applications, backend systems, and practical digital solutions.",
-  email: "your.email@example.com",
+  email: "afriza.dwi21@gmail.com",
   github: "https://github.com/afrizadwi21",
-  linkedin: "https://linkedin.com/in/",
+  linkedin: "https://www.linkedin.com/in/afrizadwi/",
   chips: [
     "Web Development",
     "Backend Engineering",

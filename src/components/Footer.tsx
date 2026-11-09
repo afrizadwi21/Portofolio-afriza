@@ -42,9 +42,8 @@ export function Footer() {
 
           <a
             href={PROFILE_DATA.linkedin}
-            onClick={(e) => {
-              if (PROFILE_DATA.linkedin.endsWith("/in/")) e.preventDefault();
-            }}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             className="w-10 h-10 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--fg)] hover:bg-[var(--acc)] hover:text-[var(--acc-ink)] hover:border-[var(--acc)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
           >

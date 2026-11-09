@@ -1,9 +1,0 @@
-{
-  "detector": {
-    "ignoreRules": [
-      "marquee"
-    ],
-    "ignoreFiles": [],
-    "ignoreValues": []
-  }
-}

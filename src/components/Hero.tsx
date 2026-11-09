@@ -37,18 +37,12 @@ export function Hero() {
       style={{ "--sy": 0 } as React.CSSProperties}
       className="relative min-h-[100svh] flex items-center pt-[140px] pb-20 overflow-hidden"
     >
-      {/* Background grid texture */}
-      <div
-        className="absolute inset-0 bg-[linear-gradient(var(--line)_1px,transparent_1px),linear-gradient(90deg,var(--line)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_60%_40%,#000,transparent)]"
-        aria-hidden="true"
-      />
-
       {/* Background orbs with parallax & slow float */}
       <div
         style={{
           translate: "0 calc(var(--sy, 0) * 0.3px)",
         }}
-        className="orb o1 absolute w-[380px] h-[380px] rounded-full blur-[90px] bg-[var(--acc)] opacity-[0.16] right-[6%] top-[12%] pointer-events-none animate-[floatOrb_14s_ease-in-out_infinite] motion-reduce:!translate-none"
+        className="orb o1 absolute w-[380px] h-[380px] rounded-full blur-[90px] bg-[var(--acc)] opacity-[0.10] right-[6%] top-[12%] pointer-events-none animate-[floatOrb_14s_ease-in-out_infinite] motion-reduce:!translate-none"
         aria-hidden="true"
       />
       <div
@@ -56,20 +50,12 @@ export function Hero() {
           translate: "0 calc(var(--sy, 0) * -0.2px)",
           animationDelay: "-6s",
         }}
-        className="orb o2 absolute w-[320px] h-[320px] rounded-full blur-[90px] bg-[var(--blue)] opacity-[0.18] right-[26%] bottom-[6%] pointer-events-none animate-[floatOrb_14s_ease-in-out_infinite] motion-reduce:!translate-none"
+        className="orb o2 absolute w-[320px] h-[320px] rounded-full blur-[90px] bg-[var(--blue)] opacity-[0.12] right-[26%] bottom-[6%] pointer-events-none animate-[floatOrb_14s_ease-in-out_infinite] motion-reduce:!translate-none"
         aria-hidden="true"
       />
 
       {/* Particle Canvas */}
       <ParticleField containerRef={heroRef} id="hero-fx" />
-
-      {/* Cursor interaction hint */}
-      <div
-        className="hint mono absolute left-0 right-0 bottom-6 text-center text-xs text-[var(--mut)] z-10 pointer-events-none px-6"
-        aria-hidden="true"
-      >
-        <b className="text-[var(--acc)] font-medium">↳</b> gerakkan kursor atau sentuh layar
-      </div>
 
       <div
         style={{
@@ -92,7 +78,7 @@ export function Hero() {
 
           {/* Headline */}
           <Reveal delayMs={140}>
-            <h1 className="font-semibold text-[clamp(38px,5.4vw,72px)] leading-[1.02] tracking-[-0.04em] text-balance">
+            <h1 className="font-semibold text-[clamp(38px,5.4vw,72px)] leading-[1.02] tracking-[-0.03em] text-balance">
               Building Digital <span className="text-[var(--mut)] block">Experiences</span> Through{" "}
               <em className="not-italic text-[var(--acc)]">Code.</em>
             </h1>
@@ -126,7 +112,7 @@ export function Hero() {
 
         {/* Small Terminal code card */}
         <Reveal delayMs={280} variant="zoom">
-          <div className="mono bg-[var(--bg2)] border border-[var(--line)] rounded-[18px] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] transform lg:rotate-2 transition-transform duration-500 hover:rotate-0 hover:-translate-y-1.5">
+          <div className="mono bg-[var(--bg2)] border border-[var(--line)] rounded-2xl overflow-hidden transform lg:rotate-1 transition-transform duration-500 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2 px-4 py-3.5 border-b border-[var(--line)] text-[11px] text-[var(--mut)]">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--line)]" />
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--line)]" />

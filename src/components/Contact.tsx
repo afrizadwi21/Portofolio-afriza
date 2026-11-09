@@ -62,13 +62,12 @@ export function Contact() {
 
             <a
               href={PROFILE_DATA.linkedin}
-              onClick={(e) => {
-                if (PROFILE_DATA.linkedin.endsWith("/in/")) e.preventDefault();
-              }}
-              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl border border-[var(--line)] bg-[var(--glass)] text-sm font-medium text-[var(--fg)] transition-all duration-300 hover:border-[var(--acc)] hover:text-[var(--acc)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[var(--line)] bg-[var(--glass)] text-sm font-medium text-[var(--fg)] transition-all duration-300 hover:border-[var(--acc)] hover:text-[var(--acc)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
             >
               <LinkedInIcon className="w-4 h-4" />
-              <span>LinkedIn · placeholder</span>
+              <span>linkedin.com/in/afrizadwi</span>
             </a>
           </div>
         </Reveal>
