@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, TitleReveal } from "./Reveal";
 import { ProjectItem, PROJECTS } from "../lib/data";
@@ -56,19 +57,42 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                 style={{ "--project-color": project.color } as React.CSSProperties}
                 className="group w-full text-left h-full flex flex-col border border-[var(--line)] rounded-2xl bg-[var(--bg2)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--project-color)_55%,transparent)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
               >
-                {/* Mini structured domain preview */}
-                <div className="h-[128px] p-4 flex items-end relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_16%,transparent),transparent_65%),var(--glass)] border-b border-[var(--line)]">
-                  <div className="w-full space-y-1.5 font-mono text-[11px]">
-                    <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
-                      <span className="text-[var(--fg)] truncate">{project.previewCode}</span>
-                      <span className="ml-auto text-[var(--mut)] text-[10px] shrink-0 uppercase">{project.type}</span>
+                {/* Project Thumbnail / Preview */}
+                <div className="h-[148px] relative overflow-hidden bg-[radial-gradient(circle_at_25%_15%,color-mix(in_srgb,var(--project-color)_16%,transparent),transparent_65%),var(--glass)] border-b border-[var(--line)]">
+                  {project.image ? (
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg2)] via-transparent to-transparent opacity-80" />
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[var(--bg)]/90 backdrop-blur-md border border-[var(--line)] text-[var(--fg)]">
+                          {project.type}
+                        </span>
+                        <span className="font-mono text-[10px] px-2 py-0.5 rounded-full bg-[var(--bg)]/90 backdrop-blur-md border border-[var(--line)] text-[var(--project-color)]">
+                          {project.tags[0]}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 px-2 py-1 text-[10px] text-[var(--mut)]">
-                      <span>Stack:</span>
-                      <span className="text-[var(--fg)] truncate">{project.tags.slice(0, 3).join(" · ")}</span>
+                  ) : (
+                    <div className="h-full p-4 flex items-end">
+                      <div className="w-full space-y-1.5 font-mono text-[11px]">
+                        <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
+                          <span className="text-[var(--fg)] truncate">{project.previewCode}</span>
+                          <span className="ml-auto text-[var(--mut)] text-[10px] shrink-0 uppercase">{project.type}</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-2 py-1 text-[10px] text-[var(--mut)]">
+                          <span>Stack:</span>
+                          <span className="text-[var(--fg)] truncate">{project.tags.slice(0, 3).join(" · ")}</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Card body */}

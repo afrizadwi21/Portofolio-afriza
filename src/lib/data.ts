@@ -8,6 +8,7 @@ export interface ProjectItem {
   color: string;
   kind: "saas" | "api" | "pos" | "school" | "lms";
   previewCode: string;
+  image?: string;
   highlights: string[];
   liveDemoUrl?: string;
   liveDemoLabel?: string;
@@ -38,6 +39,7 @@ export const PROJECTS: ProjectItem[] = [
     color: "var(--blue)",
     kind: "api",
     previewCode: "PATCH /api/laundry/orders/status",
+    image: "/DocsScalar.png",
     highlights: [
       "REST API modern terdokumentasi Scalar OpenAPI (/docs)",
       "Kalkulasi total harga & validasi dimensi (m²/kg/pcs) di backend",
@@ -59,6 +61,7 @@ export const PROJECTS: ProjectItem[] = [
     color: "#38bdf8",
     kind: "lms",
     previewCode: "POST /api/attendance/checkin",
+    image: "/Kelasku.png",
     highlights: [
       "Top 15 Best Capstone Project pada program Coding Camp",
       "Modul absensi digital siswa dengan tracking jam masuk/pulang",
@@ -80,6 +83,7 @@ export const PROJECTS: ProjectItem[] = [
     color: "#f87171",
     kind: "pos",
     previewCode: "POST /api/orders/qris",
+    image: "/PentolMercon.png",
     highlights: [
       "Sistem pemesanan pre-order & reguler langsung dari browser",
       "Integrasi pembayaran QRIS otomatis dengan timer kedaluwarsa",
@@ -101,6 +105,7 @@ export const PROJECTS: ProjectItem[] = [
     color: "#a855f7",
     kind: "school",
     previewCode: "POST /login -> Auth::attempt()",
+    image: "/sisteminformasi.png",
     highlights: [
       "Autentikasi multi-role aman (Admin, Guru, Siswa)",
       "Pengelolaan database terstruktur dengan Eloquent ORM & MySQL",

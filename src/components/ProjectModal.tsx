@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { X, ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { ProjectItem, PROJECTS } from "../lib/data";
 import { TechIcon } from "../lib/icons";
@@ -71,90 +72,36 @@ export function ProjectModal({
         </button>
 
         {/* Visual Mockup Column */}
-        <div className="min-h-[260px] md:min-h-[380px] flex items-center justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_18%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
-          <div className="w-full max-w-[340px] bg-[var(--bg)] border border-[var(--line)] rounded-xl p-5 space-y-2.5 font-mono text-xs">
-            <div className="text-[11px] text-[var(--mut)] pb-1 border-b border-[var(--line)] flex items-center justify-between">
-              <span>{project.name}</span>
-              <span className="text-[10px] uppercase tracking-wider text-[var(--project-color)]">{project.type}</span>
+        <div className="min-h-[280px] md:min-h-[420px] flex flex-col justify-center p-6 md:p-8 bg-[radial-gradient(circle_at_30%_20%,color-mix(in_srgb,var(--project-color)_18%,transparent),transparent_65%),var(--glass)] border-b md:border-b-0 md:border-r border-[var(--line)]">
+          {project.image ? (
+            <div className="w-full space-y-3">
+              <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--bg)] shadow-md">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 420px"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-[var(--mut)] px-1">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
+                  {project.name}
+                </span>
+                <span className="text-[10px] uppercase text-[var(--project-color)] font-medium">
+                  {project.type} Preview
+                </span>
+              </div>
             </div>
-
-            {project.kind === "api" && (
-              <div className="space-y-2 pt-1 text-[11px]">
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-[var(--blue)] font-semibold">
-                    <span>PATCH /api/laundry/orders/status</span>
-                    <span className="text-emerald-400">200 OK</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">odoo.models: stock.quant · stock.lot</div>
-                </div>
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-[var(--fg)]">
-                    <span>GET /docs (Scalar OpenAPI)</span>
-                    <span className="text-[var(--blue)]">Active</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">Session auth & multi-batch tracking</div>
-                </div>
+          ) : (
+            <div className="w-full max-w-[340px] mx-auto bg-[var(--bg)] border border-[var(--line)] rounded-xl p-5 space-y-2.5 font-mono text-xs">
+              <div className="text-[11px] text-[var(--mut)] pb-1 border-b border-[var(--line)] flex items-center justify-between">
+                <span>{project.name}</span>
+                <span className="text-[10px] uppercase tracking-wider text-[var(--project-color)]">{project.type}</span>
               </div>
-            )}
 
-            {project.kind === "lms" && (
-              <div className="space-y-2 pt-1 text-[11px]">
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-sky-400 font-semibold">
-                    <span>POST /api/attendance/checkin</span>
-                    <span className="text-emerald-400">Recorded</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">Student ID verification & timestamp</div>
-                </div>
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-[var(--fg)]">
-                    <span>Top 15 Capstone Coding Camp</span>
-                    <span className="text-sky-400">Winner</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">React.js + Express.js fullstack</div>
-                </div>
-              </div>
-            )}
-
-            {project.kind === "pos" && (
-              <div className="space-y-2 pt-1 text-[11px]">
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-red-400 font-semibold">
-                    <span>Dynamic QRIS Payment</span>
-                    <span className="text-amber-400">03:00</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">Auto-cancel countdown & order status</div>
-                </div>
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-[var(--fg)]">
-                    <span>Pre-Order & Order Tracker</span>
-                    <span className="text-emerald-400">Synced</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">Customer phone lookup & admin ops</div>
-                </div>
-              </div>
-            )}
-
-            {project.kind === "school" && (
-              <div className="space-y-2 pt-1 text-[11px]">
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-purple-400 font-semibold">
-                    <span>Laravel Multi-Role Auth</span>
-                    <span className="text-emerald-400">Session OK</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">Admin · Guru · Siswa RBAC</div>
-                </div>
-                <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
-                  <div className="flex items-center justify-between text-[var(--fg)]">
-                    <span>Sistem Informasi Jurusan</span>
-                    <span className="text-purple-400">SMKN 4</span>
-                  </div>
-                  <div className="text-[var(--mut)] text-[10px]">MySQL + Eloquent ORM + Tailwind</div>
-                </div>
-              </div>
-            )}
-
-            {project.kind === "saas" && (
               <div className="space-y-2 pt-1 text-[11px]">
                 <div className="p-2.5 rounded-lg border border-[var(--line)] bg-[var(--bg2)] space-y-1">
                   <div className="flex items-center justify-between text-[var(--acc)] font-semibold">
@@ -171,8 +118,8 @@ export function ProjectModal({
                   <div className="text-[var(--mut)] text-[10px]">Multi-channel supply chain flow</div>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Project Info Column */}
