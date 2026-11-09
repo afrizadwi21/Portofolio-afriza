@@ -119,15 +119,17 @@ export function Certificates() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[var(--line)]">
-                  <a
-                    href={current.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[var(--acc)] text-[var(--acc-ink)] transition-opacity hover:opacity-90"
-                  >
-                    <LinkedInIcon className="w-3.5 h-3.5" />
-                    Verifikasi di LinkedIn
-                  </a>
+                  {current.verifyUrl && (
+                    <a
+                      href={current.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[var(--acc)] text-[var(--acc-ink)] transition-opacity hover:opacity-90"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Verifikasi Kredensial
+                    </a>
+                  )}
                   <button
                     type="button"
                     onClick={() => setActiveCert(current)}

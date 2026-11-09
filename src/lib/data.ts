@@ -7,7 +7,7 @@ export interface CertificateItem {
   image: string;
   category: string;
   description: string;
-  verifyUrl: string;
+  verifyUrl?: string;
 }
 
 export interface ProjectItem {
@@ -175,6 +175,18 @@ export const TECH_LANES: TechLane[] = [
 
 export const CERTIFICATES: CertificateItem[] = [
   {
+    id: "ebdesk-kunjungan-industri",
+    title: "Sertifikat Kunjungan Industri PT. eBdesk",
+    issuer: "SMK Negeri 4 Padalarang · PT. eBdesk",
+    credentialId: "421.5/670/SMKN4-CADISDIKWIL.VI/X/2024",
+    year: "2024",
+    image: "/cert-ebdesk.jpg",
+    category: "Industrial Immersion",
+    description:
+      "Pelaksanaan kunjungan industri ke PT. eBdesk sebagai implementasi kurikulum merdeka penguatan profil pelajar pancasila dengan predikat Sangat Baik.",
+    verifyUrl: "https://sidebar.jabarprov.go.id/v/519D4D132C",
+  },
+  {
     id: "best-capstone",
     title: "Top 15 Best Capstone Project",
     issuer: "Coding Camp 2026 (DBS Foundation)",
@@ -184,7 +196,6 @@ export const CERTIFICATES: CertificateItem[] = [
     category: "Award & Achievement",
     description:
       "Penghargaan Top 15 Best Capstone Project atas kontribusi frontend dan integrasi REST API platform KelasKu LMS.",
-    verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
   },
   {
     id: "coding-camp-completion",
@@ -196,7 +207,6 @@ export const CERTIFICATES: CertificateItem[] = [
     category: "Professional Training",
     description:
       "Kelulusan intensif program pengembangan web modern dengan penguasaan standar industri rekayasa software dan kolaborasi tim.",
-    verifyUrl: "https://www.linkedin.com/in/afrizadwi/",
   },
   {
     id: "dicoding-react",
