@@ -43,6 +43,15 @@ body {
   font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
