@@ -18,8 +18,8 @@
   --bg2: #ffffff;
   --fg: #0e0f10;
   --mut: #5d6269;
-  --line: rgba(0, 0, 0, 0.1);
-  --glass: rgba(0, 0, 0, 0.035);
+  --line: rgba(0, 0, 0, 0.12);
+  --glass: rgba(0, 0, 0, 0.04);
   --acc: #4d7a00;
   --acc-ink: #ffffff;
   --blue: #2f5bd8;
@@ -29,6 +29,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px));
+  caret-color: var(--acc);
 }
 
 body {
@@ -36,7 +37,27 @@ body {
   color: var(--fg);
   font-family: var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+::selection {
+  background-color: var(--acc);
+  color: var(--acc-ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mut);
 }
 
 .mono {
@@ -49,6 +70,18 @@ body {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes floatOrb {
+  50% {
+    transform: translate(-30px, 28px) scale(1.08);
+  }
+}
+
+@keyframes barGrow {
+  to {
+    transform: scaleY(0.72);
   }
 }
 
@@ -67,16 +100,16 @@ body {
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation: none !important;
   }
 }
