@@ -31,7 +31,7 @@ export function Contact() {
         <Reveal delayMs={300}>
           <a
             href={`mailto:${PROFILE_DATA.email}`}
-            className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-semibold text-base bg-[var(--acc)] text-[var(--acc-ink)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_var(--acc)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+            className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-semibold text-base bg-[var(--acc)] text-[var(--acc-ink)] transition-colors duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
           >
             Contact Me <ArrowRight className="w-4 h-4" />
           </a>

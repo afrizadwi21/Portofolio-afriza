@@ -161,7 +161,7 @@ export function ProjectModal({
               onClick={(e) => {
                 if (project.liveDemoUrl === "#") e.preventDefault();
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[var(--acc)] text-[var(--acc-ink)] hover:shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[var(--acc)] text-[var(--acc-ink)] transition-opacity duration-200 hover:opacity-90"
             >
               <ExternalLink className="w-3.5 h-3.5" /> Live demo
             </a>

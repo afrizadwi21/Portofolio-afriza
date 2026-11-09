@@ -92,20 +92,20 @@ export function Hero() {
             </p>
           </Reveal>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons & Contact Link */}
           <Reveal delayMs={280}>
-            <div className="flex flex-wrap gap-3.5">
+            <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-semibold text-[15px] bg-[var(--acc)] text-[var(--acc-ink)] border border-[var(--acc)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_36px_-8px_var(--acc)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-semibold text-[15px] bg-[var(--acc)] text-[var(--acc-ink)] border border-[var(--acc)] transition-colors duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
               >
                 View Projects <ArrowRight className="w-[18px] h-[18px]" />
               </a>
               <a
-                href="#contact"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full font-semibold text-[15px] border border-[var(--line)] text-[var(--fg)] bg-transparent transition-all duration-300 hover:bg-[var(--glass)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+                href={`mailto:${PROFILE_DATA.email}`}
+                className="inline-flex items-center gap-2 text-[15px] font-medium text-[var(--mut)] hover:text-[var(--acc)] underline underline-offset-8 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] rounded-sm"
               >
-                Contact Me <Mail className="w-[18px] h-[18px]" />
+                <Mail className="w-4 h-4" /> Contact ({PROFILE_DATA.email})
               </a>
             </div>
           </Reveal>

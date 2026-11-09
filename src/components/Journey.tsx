@@ -47,7 +47,7 @@ export function Journey() {
               <div className="group relative pl-12">
                 {/* Pop-in node with bounce effect */}
                 <span
-                  className="absolute left-[4px] top-1.5 w-[15px] h-[15px] rounded-full bg-[var(--bg)] border-2 border-[var(--acc)] transition-all duration-300 group-hover:bg-[var(--acc)] group-hover:shadow-[0_0_18px_var(--acc)]"
+                  className="absolute left-[4px] top-1.5 w-[15px] h-[15px] rounded-full bg-[var(--bg)] border-2 border-[var(--acc)] transition-colors duration-200 group-hover:bg-[var(--acc)]"
                   aria-hidden="true"
                 />
 

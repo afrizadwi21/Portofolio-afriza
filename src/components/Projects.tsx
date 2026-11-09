@@ -34,9 +34,9 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                 role="tab"
                 aria-selected={activeCategory === cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition-colors duration-200 cursor-pointer ${
                   activeCategory === cat
-                    ? "bg-[var(--acc)] text-[var(--acc-ink)] border-[var(--acc)] shadow-[0_4px_16px_-4px_var(--acc)]"
+                    ? "bg-[var(--acc)] text-[var(--acc-ink)] border-[var(--acc)]"
                     : "border-[var(--line)] bg-transparent text-[var(--mut)] hover:text-[var(--fg)] hover:border-[var(--fg)]"
                 }`}
               >
