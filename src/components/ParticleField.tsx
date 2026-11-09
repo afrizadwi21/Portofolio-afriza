@@ -62,18 +62,31 @@ export function ParticleField({
     let isVisible = true;
     let animId = 0;
 
-    const readThemeColors = () => {
+    let themeColors = { accRgb: "198, 255, 61", fgRgb: "244, 245, 242", contrastMultiplier: 1.5, isLight: false };
+
+    const updateThemeColors = () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light" ||
+        (!document.documentElement.getAttribute("data-theme") && resolvedTheme === "light");
       const styles = getComputedStyle(document.documentElement);
-      const accVal = styles.getPropertyValue("--acc") || "#c6ff3d";
-      const isLight = resolvedTheme === "light";
+      const accVal = styles.getPropertyValue("--acc") || (isLight ? "#4d7a00" : "#c6ff3d");
       const fgVal = isLight ? "#2a3b5c" : (styles.getPropertyValue("--fg") || "#f4f5f2");
-      const accRgb = hexToRgb(accVal);
-      const fgRgb = hexToRgb(fgVal);
-      const contrastMultiplier = isLight ? 2.6 : 1.25;
-      return { accRgb, fgRgb, contrastMultiplier, isLight };
+      themeColors = {
+        accRgb: hexToRgb(accVal),
+        fgRgb: hexToRgb(fgVal),
+        contrastMultiplier: isLight ? 2.6 : 1.6,
+        isLight,
+      };
     };
 
-    const themeColors = readThemeColors();
+    updateThemeColors();
+
+    const themeObserver = new MutationObserver(() => {
+      updateThemeColors();
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme", "class"],
+    });
 
     const resize = () => {
       const rect = parent.getBoundingClientRect();
@@ -173,10 +186,10 @@ export function ParticleField({
           if (dist < 150) {
             const alpha = Math.min(
               0.85,
-              0.24 * themeColors.contrastMultiplier * (1 - dist / 150)
+              0.28 * themeColors.contrastMultiplier * (1 - dist / 150)
             );
             ctx.strokeStyle = `rgba(${themeColors.fgRgb}, ${alpha})`;
-            ctx.lineWidth = 1.1;
+            ctx.lineWidth = 1.15;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -254,6 +267,7 @@ export function ParticleField({
     return () => {
       cancelAnimationFrame(animId);
       observer.disconnect();
+      themeObserver.disconnect();
       parent.removeEventListener("pointermove", handlePointerMove as EventListener);
       parent.removeEventListener("pointerleave", handlePointerLeave);
       parent.removeEventListener("pointerdown", handlePointerDown as EventListener);
