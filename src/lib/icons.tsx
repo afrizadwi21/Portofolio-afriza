@@ -79,6 +79,41 @@ export function TechIcon({ name }: { name: string }) {
           </g>
         </svg>
       );
+    case "Express.js":
+      return (
+        <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="currentColor" opacity="0.1" />
+          <text x="16" y="21" textAnchor="middle" fontSize="12" fontWeight="700" fill="currentColor" className="mono">ex</text>
+        </svg>
+      );
+    case "MySQL":
+      return (
+        <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#00758f" />
+          <text x="16" y="21" textAnchor="middle" fontSize="11" fontWeight="700" fill="#f29111" className="mono">SQL</text>
+        </svg>
+      );
+    case "Postman":
+      return (
+        <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="#ff6c37" />
+          <path d="M9 16l5 5 9-9" stroke="#fff" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "Linux":
+      return (
+        <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="#fcc624" />
+          <text x="16" y="22" textAnchor="middle" fontSize="16" fontWeight="900" fill="#111" className="mono">🐧</text>
+        </svg>
+      );
+    case "Vercel":
+      return (
+        <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="currentColor" />
+          <path d="M16 8l8 14H8z" fill="var(--bg)" />
+        </svg>
+      );
     case "Laravel":
       return (
         <svg viewBox="0 0 32 32" className="w-6 h-6 overflow-visible" aria-hidden="true">
