@@ -63,7 +63,7 @@ export function Hero() {
           transform: "translateY(calc(var(--sy, 0) * -0.08px))",
           opacity: "max(0.4, calc(1 - var(--sy, 0) / 1100))",
         }}
-        className="max-w-[1180px] mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-12 items-center w-full motion-reduce:!transform-none motion-reduce:!opacity-100"
+        className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-12 items-center motion-reduce:!transform-none motion-reduce:!opacity-100"
       >
         <div>
           {/* Availability pill */}

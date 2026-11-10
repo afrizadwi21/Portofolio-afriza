@@ -15,7 +15,7 @@ export function Contact() {
         aria-hidden="true"
       />
 
-      <div className="max-w-[1180px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 relative z-10">
         <TitleReveal
           text="Have an idea? Let’s build something meaningful."
           highlightWord="meaningful."

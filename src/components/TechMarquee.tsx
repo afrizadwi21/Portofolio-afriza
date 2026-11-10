@@ -109,10 +109,10 @@ function MarqueeLaneRow({ lane }: { lane: TechLane }) {
 
 export function TechMarquee() {
   return (
-    <div className="pt-24 pb-12">
+    <div className="pt-24 pb-12 w-full max-w-full overflow-hidden">
       <TitleReveal text="Tools I work with." className="mb-12" />
 
-      <div className="space-y-8 w-screen relative left-1/2 -translate-x-1/2">
+      <div className="space-y-8 w-full max-w-full overflow-hidden">
         {TECH_LANES.map((lane) => (
           <MarqueeLaneRow key={lane.title} lane={lane} />
         ))}

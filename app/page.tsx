@@ -28,7 +28,7 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         <Hero />
         <About />
         <Projects onSelectProject={(proj) => setSelectedProject(proj)} />

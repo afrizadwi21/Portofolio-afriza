@@ -53,12 +53,12 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl bg-[color-mix(in_srgb,var(--bg)_80%,transparent)] border-b border-[var(--line)]">
-        <div className="max-w-[1180px] mx-auto px-6 h-[68px] flex items-center justify-between">
+      <header className="fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl bg-[color-mix(in_srgb,var(--bg)_80%,transparent)] border-b border-[var(--line)] w-full max-w-full">
+        <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between">
           <Link
             href="#home"
             onClick={() => setMobileOpen(false)}
-            className="font-bold tracking-[0.16em] text-[15px] flex items-center gap-2.5 hover:opacity-90 transition-opacity"
+            className="font-bold tracking-[0.16em] text-[15px] flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0"
           >
             <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[var(--line)] bg-[var(--bg2)] flex items-center justify-center shrink-0">
               <Image
@@ -94,12 +94,12 @@ export function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden w-[42px] h-[42px] rounded-xl border border-[var(--line)] bg-[var(--glass)] text-[var(--fg)] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+              className="md:hidden w-[40px] h-[40px] sm:w-[42px] sm:h-[42px] rounded-xl border border-[var(--line)] bg-[var(--glass)] text-[var(--fg)] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] shrink-0 cursor-pointer"
               aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
               aria-expanded={mobileOpen}
             >

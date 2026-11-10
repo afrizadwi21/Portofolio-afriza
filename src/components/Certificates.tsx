@@ -44,8 +44,8 @@ export function Certificates() {
   const current = CERTIFICATES[currentIndex];
 
   return (
-    <section id="certificates" className="py-24 relative border-t border-[var(--line)]">
-      <div className="max-w-[1180px] mx-auto px-6">
+    <section id="certificates" className="py-24 relative border-t border-[var(--line)] overflow-hidden">
+      <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <TitleReveal text="Licenses & Certifications." className="mb-2" />

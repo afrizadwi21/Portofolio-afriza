@@ -1,83 +1,17 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { ParticleField } from "./ParticleField";
 import { Reveal, TitleReveal } from "./Reveal";
 import { PROFILE_DATA } from "../lib/data";
-import {
-  BackdropCurvedText,
-  BackdropTextConfig,
-  DEFAULT_BACKDROP_CONFIG,
-} from "./BackdropCurvedText";
-import { BackdropTextControls } from "./BackdropTextControls";
 
 export function About() {
   const photoContainerRef = useRef<HTMLElement>(null);
-  const [config, setConfig] = useState<BackdropTextConfig>(DEFAULT_BACKDROP_CONFIG);
-  const [animAngle, setAnimAngle] = useState(0);
-
-  // Load saved preference from localStorage on mount (deferred to avoid cascading render)
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("afriza_aura_text_config");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        requestAnimationFrame(() => {
-          setConfig((prev) => ({ ...prev, ...parsed }));
-        });
-      }
-    } catch {
-      // LocalStorage access might fail in restricted environments
-    }
-  }, []);
-
-  // Save to localStorage when config changes
-  useEffect(() => {
-    try {
-      localStorage.setItem("afriza_aura_text_config", JSON.stringify(config));
-    } catch {
-      // Ignore storage errors
-    }
-  }, [config]);
-
-  // Smooth 60fps/120fps rotation loop
-  useEffect(() => {
-    if (!config.isPlaying) return;
-
-    let animId: number;
-    let lastTime = performance.now();
-
-    const loop = (currentTime: number) => {
-      const deltaMs = currentTime - lastTime;
-      lastTime = currentTime;
-
-      const speedMs = Math.max(1, config.speed * 1000);
-      const deltaDeg = (deltaMs / speedMs) * 360 * (config.direction === "cw" ? 1 : -1);
-
-      setAnimAngle((prev) => (prev + deltaDeg) % 360);
-      animId = requestAnimationFrame(loop);
-    };
-
-    animId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(animId);
-  }, [config.isPlaying, config.speed, config.direction]);
-
-  const effectiveAngle = config.isPlaying ? animAngle : config.manualRotation;
-
-  const handleReset = () => {
-    setConfig(DEFAULT_BACKDROP_CONFIG);
-    setAnimAngle(0);
-    try {
-      localStorage.removeItem("afriza_aura_text_config");
-    } catch {
-      // Ignore
-    }
-  };
 
   return (
-    <section id="about" className="py-28 relative">
-      <div className="max-w-[1180px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-[70px] items-start">
+    <section id="about" className="py-28 relative overflow-hidden">
+      <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-[70px] items-start">
         {/* Left column: Heading, Quote, and Oval Masked Photo */}
         <div>
           <TitleReveal text="Curious by default. Builder by habit." className="mb-6 max-w-[15ch]" />
@@ -92,14 +26,8 @@ export function About() {
           <Reveal delayMs={200} variant="zoom">
             <figure
               ref={photoContainerRef}
-              className="relative aspect-[4/5] max-w-[360px] mx-auto lg:mx-0 mt-14 flex items-center justify-center overflow-visible"
+              className="relative aspect-[4/5] w-full max-w-[320px] sm:max-w-[360px] mx-auto lg:mx-0 mt-10 lg:mt-14 flex items-center justify-center overflow-hidden rounded-2xl"
             >
-              {/* Backdrop Curved Text encircling behind back & shoulders */}
-              <BackdropCurvedText
-                config={config}
-                rotationAngle={effectiveAngle}
-              />
-
               {/* Particle field encircling the photo */}
               <ParticleField
                 containerRef={photoContainerRef}
@@ -110,7 +38,7 @@ export function About() {
               />
 
               {/* Portrait cutout fading smoothly at the bottom into the surface */}
-              <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)] pointer-events-none select-none">
+              <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]">
                 <Image
                   src="/Foto.png"
                   alt={`Foto ${PROFILE_DATA.name}`}
@@ -121,13 +49,6 @@ export function About() {
                 />
               </div>
             </figure>
-
-            {/* Interactive Control Panel for Aura Text */}
-            <BackdropTextControls
-              config={config}
-              onChange={setConfig}
-              onReset={handleReset}
-            />
           </Reveal>
         </div>
 

@@ -21,8 +21,8 @@ export function Projects({ onSelectProject }: ProjectsProps) {
       : PROJECTS.filter((p) => p.type === activeCategory);
 
   return (
-    <section id="projects" className="py-28 relative">
-      <div className="max-w-[1180px] mx-auto px-6">
+    <section id="projects" className="py-28 relative overflow-hidden">
+      <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6">
         <TitleReveal text="Things I’ve been building." className="mb-8" />
 
         {/* Filter categories */}

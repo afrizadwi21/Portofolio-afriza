@@ -14,7 +14,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--line)] py-8">
-      <div className="max-w-[1180px] mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-sm text-[var(--mut)]">
+      <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-4 text-sm text-[var(--mut)]">
         <Link
           href="#home"
           className="font-bold tracking-[0.16em] text-[15px] flex items-center gap-2.5 text-[var(--fg)] hover:opacity-90 transition-opacity"
