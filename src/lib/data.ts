@@ -397,7 +397,7 @@ export const PROFILE_DATA = {
   direction: "Full-Stack Development",
   headline: "Building Digital Experiences Through Code.",
   quote:
-    "“Saya percaya bahwa perangkat lunak yang andal bermula dari arsitektur backend yang disiplin dan dieksekusi dengan antarmuka yang bersih serta fungsional.”",
+    "“I believe reliable software begins with disciplined backend architecture and is delivered through clean, purposeful interfaces.”",
   lead:
     "I’m Afriza, a developer passionate about building modern web applications, backend systems, and practical digital solutions.",
   email: "afriza.dwi21@gmail.com",

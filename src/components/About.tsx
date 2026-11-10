@@ -1,13 +1,79 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { ParticleField } from "./ParticleField";
 import { Reveal, TitleReveal } from "./Reveal";
 import { PROFILE_DATA } from "../lib/data";
+import {
+  BackdropCurvedText,
+  BackdropTextConfig,
+  DEFAULT_BACKDROP_CONFIG,
+} from "./BackdropCurvedText";
+import { BackdropTextControls } from "./BackdropTextControls";
 
 export function About() {
   const photoContainerRef = useRef<HTMLElement>(null);
+  const [config, setConfig] = useState<BackdropTextConfig>(DEFAULT_BACKDROP_CONFIG);
+  const [animAngle, setAnimAngle] = useState(0);
+
+  // Load saved preference from localStorage on mount (deferred to avoid cascading render)
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("afriza_aura_text_config");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        requestAnimationFrame(() => {
+          setConfig((prev) => ({ ...prev, ...parsed }));
+        });
+      }
+    } catch {
+      // LocalStorage access might fail in restricted environments
+    }
+  }, []);
+
+  // Save to localStorage when config changes
+  useEffect(() => {
+    try {
+      localStorage.setItem("afriza_aura_text_config", JSON.stringify(config));
+    } catch {
+      // Ignore storage errors
+    }
+  }, [config]);
+
+  // Smooth 60fps/120fps rotation loop
+  useEffect(() => {
+    if (!config.isPlaying) return;
+
+    let animId: number;
+    let lastTime = performance.now();
+
+    const loop = (currentTime: number) => {
+      const deltaMs = currentTime - lastTime;
+      lastTime = currentTime;
+
+      const speedMs = Math.max(1, config.speed * 1000);
+      const deltaDeg = (deltaMs / speedMs) * 360 * (config.direction === "cw" ? 1 : -1);
+
+      setAnimAngle((prev) => (prev + deltaDeg) % 360);
+      animId = requestAnimationFrame(loop);
+    };
+
+    animId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(animId);
+  }, [config.isPlaying, config.speed, config.direction]);
+
+  const effectiveAngle = config.isPlaying ? animAngle : config.manualRotation;
+
+  const handleReset = () => {
+    setConfig(DEFAULT_BACKDROP_CONFIG);
+    setAnimAngle(0);
+    try {
+      localStorage.removeItem("afriza_aura_text_config");
+    } catch {
+      // Ignore
+    }
+  };
 
   return (
     <section id="about" className="py-28 relative">
@@ -28,17 +94,23 @@ export function About() {
               ref={photoContainerRef}
               className="relative aspect-[4/5] max-w-[360px] mx-auto lg:mx-0 mt-14 flex items-center justify-center overflow-visible"
             >
+              {/* Backdrop Curved Text encircling behind back & shoulders */}
+              <BackdropCurvedText
+                config={config}
+                rotationAngle={effectiveAngle}
+              />
+
               {/* Particle field encircling the photo */}
               <ParticleField
                 containerRef={photoContainerRef}
                 id="about-fx"
                 densityDivider={3800}
                 maxPoints={120}
-                className="-inset-y-[12%] -inset-x-[28%] !w-[156%] !h-[124%] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_55%,transparent_100%)]"
+                className="-inset-y-[12%] -inset-x-[28%] !w-[156%] !h-[124%] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_55%,transparent_100%)] pointer-events-none"
               />
 
               {/* Portrait cutout fading smoothly at the bottom into the surface */}
-              <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]">
+              <div className="relative w-full h-full z-10 [mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)] pointer-events-none select-none">
                 <Image
                   src="/Foto.png"
                   alt={`Foto ${PROFILE_DATA.name}`}
@@ -49,6 +121,13 @@ export function About() {
                 />
               </div>
             </figure>
+
+            {/* Interactive Control Panel for Aura Text */}
+            <BackdropTextControls
+              config={config}
+              onChange={setConfig}
+              onReset={handleReset}
+            />
           </Reveal>
         </div>
 
