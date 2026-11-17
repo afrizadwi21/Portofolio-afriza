@@ -66,19 +66,8 @@ export function Hero() {
         className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-12 items-center motion-reduce:!transform-none motion-reduce:!opacity-100"
       >
         <div>
-          {/* Availability pill */}
-          <Reveal delayMs={70}>
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--line)] bg-[var(--glass)] text-[13px] mb-8 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full border border-[var(--acc)] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--acc)]" />
-              </span>
-              Available for internships & collaborations
-            </div>
-          </Reveal>
-
           {/* Headline */}
-          <Reveal delayMs={140}>
+          <Reveal delayMs={70}>
             <h1 className="font-semibold text-[clamp(38px,5.4vw,72px)] leading-[1.02] tracking-[-0.03em] text-balance">
               Building Digital <span className="text-[var(--mut)] block">Experiences</span> Through{" "}
               <em className="not-italic text-[var(--acc)]">Code.</em>
