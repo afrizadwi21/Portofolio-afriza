@@ -82,13 +82,12 @@ export function Projects({ onSelectProject }: ProjectsProps) {
                     <div className="h-full p-4 flex items-end">
                       <div className="w-full space-y-1.5 font-mono text-[11px]">
                         <div className="flex items-center gap-2 p-2 rounded-lg border border-[var(--line)] bg-[var(--bg)]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--project-color)]" />
                           <span className="text-[var(--fg)] truncate">{project.previewCode}</span>
                           <span className="ml-auto text-[var(--mut)] text-[10px] shrink-0 uppercase">{project.type}</span>
                         </div>
                         <div className="flex items-center gap-2 px-2 py-1 text-[10px] text-[var(--mut)]">
                           <span>Stack:</span>
-                          <span className="text-[var(--fg)] truncate">{project.tags.slice(0, 3).join(" · ")}</span>
+                          <span className="text-[var(--fg)] truncate">{project.tags.slice(0, 3).join(" / ")}</span>
                         </div>
                       </div>
                     </div>

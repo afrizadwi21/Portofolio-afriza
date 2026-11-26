@@ -86,8 +86,7 @@ export function ProjectModal({
                 />
               </div>
               <div className="flex items-center justify-between text-[11px] font-mono text-[var(--mut)] px-1">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[var(--project-color)]" />
+                <span className="font-medium text-[var(--fg)]">
                   {project.name}
                 </span>
                 <span className="text-[10px] uppercase text-[var(--project-color)] font-medium">

@@ -44,7 +44,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "laundryflow",
     name: "LaundryFlow",
     type: "Backend",
-    category: "Backend · Odoo 20 ERP & REST API",
+    category: "Backend / Odoo 20 ERP & REST API",
     description:
       "Arsitektur backend sistem manajemen laundry terintegrasi Odoo 20 dan PostgreSQL. Menyediakan REST API modern (terdokumentasi dengan Scalar OpenAPI) untuk inventaris multi-batch, kalkulasi harga order dinamis di server, validasi alur status pesanan, dan integrasi WhatsApp.",
     tags: ["Python", "Odoo 20", "PostgreSQL", "REST API"],
@@ -66,7 +66,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "kelasku",
     name: "KelasKu",
     type: "Full-Stack",
-    category: "EdTech · Learning Management System",
+    category: "EdTech / Learning Management System",
     description:
       "Platform Learning Management System (LMS) modern untuk manajemen kelas, materi pembelajaran digital, presensi check-in/check-out siswa dengan ekspor laporan CSV, dan pemantauan progres akademik terstruktur. Terpilih sebagai Top 15 Best Capstone Project.",
     tags: ["React.js", "Express.js", "Tailwind CSS", "REST API"],
@@ -88,7 +88,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "pentol-mercon",
     name: "Pentol Mercon Lava",
     type: "Web App",
-    category: "F&B · E-Commerce & Point of Sale",
+    category: "F&B / E-Commerce & Point of Sale",
     description:
       "Aplikasi pemesanan dan katalog digital untuk UMKM kuliner Pentol Mercon Lava. Dilengkapi integrasi pembayaran QRIS dinamis dengan countdown timer otomatis, pelacakan riwayat pesanan (pre-order & direct order), serta dashboard operasional admin.",
     tags: ["React 19", "Vite", "Tailwind CSS", "QRIS API"],
@@ -110,7 +110,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "sis-pplg",
     name: "Sistem Informasi PPLG",
     type: "Full-Stack",
-    category: "School ERP · Sistem Akademik & Guru",
+    category: "School ERP / Sistem Akademik & Guru",
     description:
       "Sistem informasi manajemen sekolah dan portal akademik jurusan PPLG SMK Negeri 4 Padalarang. Menangani autentikasi berbasis peran (admin, guru, siswa), pengelolaan rekap nilai, data inventaris lab, dan manajemen jadwal kelas.",
     tags: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
@@ -132,7 +132,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "distribucore",
     name: "DistribuCore",
     type: "B2B SaaS",
-    category: "B2B SaaS · Distribution Management",
+    category: "B2B SaaS / Distribution Management",
     description:
       "Platform B2B Distribution Management System (DMS) multi-tenant berbasis cloud untuk distributor grosir dan material bangunan. Menyatukan siklus Procure-to-Pay (P2P), Order-to-Cash (O2C), mesin reservasi stok real-time (ATP) dengan distributed locking Redis, dan pelacakan pengiriman bertahap (POD).",
     tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "Redis Lock"],
