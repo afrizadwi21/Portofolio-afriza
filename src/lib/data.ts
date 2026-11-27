@@ -18,7 +18,7 @@ export interface ProjectItem {
   description: string;
   tags: string[];
   color: string;
-  kind: "saas" | "api" | "pos" | "school" | "lms" | "fintech";
+  kind: "saas" | "api" | "pos" | "school" | "lms" | "fintech" | "weather";
   previewCode: string;
   image?: string;
   highlights: string[];
@@ -40,6 +40,72 @@ export interface JourneyStep {
 }
 
 export const PROJECTS: ProjectItem[] = [
+  {
+    id: "distribucore",
+    name: "DistribuCore",
+    type: "B2B SaaS",
+    category: "B2B SaaS / Distribution Management",
+    description:
+      "Platform B2B Distribution Management System (DMS) multi-tenant berbasis cloud untuk distributor grosir dan material bangunan. Menyatukan siklus Procure-to-Pay (P2P), Order-to-Cash (O2C), mesin reservasi stok real-time (ATP) dengan distributed locking Redis, dan pelacakan pengiriman bertahap (POD).",
+    tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "Redis Lock"],
+    color: "#00ADD8",
+    kind: "saas",
+    previewCode: "ATP = Physical - Reserved - Safety",
+    image: "/distribucore.png",
+    highlights: [
+      "Mesin reservasi stok real-time (Available-to-Promise) dengan Redis Distributed Mutex",
+      "Siklus bisnis lengkap: Purchase Order, GRN, Sales Order, Surat Jalan, hingga Invoicing",
+      "Arsitektur multi-tenant dengan isolasi data ketat dan Role-Based Access Control (RBAC)",
+      "Backend performa tinggi Go (Fiber) + frontend responsif Next.js 16 & Tailwind CSS",
+    ],
+    liveDemoUrl: "https://distribucore.my.id",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/afrizadwi21/DistribuCore",
+  },
+  {
+    id: "weatherly",
+    name: "Weatherly",
+    type: "Full-Stack",
+    category: "Weather Intelligence / BMKG & AI Platform",
+    description:
+      "Platform intelijen cuaca web real-time untuk seluruh 27 Kota/Kabupaten & 627 Kecamatan di Jawa Barat (BMKG Kode 32), dilengkapi telemetri kualitas udara & UV Open-Meteo, asisten cuaca AI tervalidasi, rute Smart Travel, serta laporan warga berfoto.",
+    tags: ["Next.js 16", "Go", "PostgreSQL", "Gemini AI"],
+    color: "#e11d48",
+    kind: "weather",
+    previewCode: "GET /api/bmkg/jabar?code=32.73.01",
+    image: "/weatherly.png",
+    highlights: [
+      "Cakupan lengkap 27 Kota/Kabupaten & 627 Kecamatan di Jawa Barat (BMKG Kode 32)",
+      "Two-Stage AI Weather Engine (Gemini 2.5 Flash) dengan guardrail topik cuaca",
+      "Pemantauan kualitas udara real-time (AQI/PM2.5/UV) & Berita Acara bencana",
+      "Arsitektur Next.js 16 + Golang Modular Monolith, PostgreSQL/PostGIS & Redis",
+    ],
+    liveDemoUrl: "https://weatherly-beta-three.vercel.app/",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/afrizadwi21/weatherly",
+  },
+  {
+    id: "kasku",
+    name: "KasKu",
+    type: "FinTech",
+    category: "FinTech / Personal Finance & Wealth",
+    description:
+      "Aplikasi pencatat keuangan pribadi multi-user dengan isolasi data penuh, perhitungan batas aman belanja harian (Safe-to-Spend), pelacakan hutang & piutang otomatis, pos alokasi tabungan, dan simulasi belanja wishlist.",
+    tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "JWT & Bcrypt"],
+    color: "#10b981",
+    kind: "fintech",
+    previewCode: "GET /api/me/safe-to-spend",
+    image: "/kasku.png",
+    highlights: [
+      "Arsitektur multi-user dengan isolasi data penuh & proteksi JWT + Refresh Token rotasi",
+      "Kalkulasi real-time uang aman pakai hari ini (Safe-to-Spend) & Pos Tabungan",
+      "Pelacakan otomatis hutang/piutang cicilan, tagihan rutin, dan simulasi wishlist",
+      "High-performance backend Go (Fiber) + Neon PostgreSQL & frontend Next.js 16",
+    ],
+    liveDemoUrl: "https://kasku-web-gamma.vercel.app",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/afrizadwi21/KasKu",
+  },
   {
     id: "laundryflow",
     name: "LaundryFlow",
@@ -127,50 +193,6 @@ export const PROJECTS: ProjectItem[] = [
     liveDemoUrl: "https://afrizadwi.pplgsmkn4.my.id/laravelAfriza/laravelAfriza/myapp/public/index.php/login",
     liveDemoLabel: "Portal Login",
     githubUrl: "https://github.com/afrizadwi21",
-  },
-  {
-    id: "distribucore",
-    name: "DistribuCore",
-    type: "B2B SaaS",
-    category: "B2B SaaS / Distribution Management",
-    description:
-      "Platform B2B Distribution Management System (DMS) multi-tenant berbasis cloud untuk distributor grosir dan material bangunan. Menyatukan siklus Procure-to-Pay (P2P), Order-to-Cash (O2C), mesin reservasi stok real-time (ATP) dengan distributed locking Redis, dan pelacakan pengiriman bertahap (POD).",
-    tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "Redis Lock"],
-    color: "#00ADD8",
-    kind: "saas",
-    previewCode: "ATP = Physical - Reserved - Safety",
-    image: "/distribucore.png",
-    highlights: [
-      "Mesin reservasi stok real-time (Available-to-Promise) dengan Redis Distributed Mutex",
-      "Siklus bisnis lengkap: Purchase Order, GRN, Sales Order, Surat Jalan, hingga Invoicing",
-      "Arsitektur multi-tenant dengan isolasi data ketat dan Role-Based Access Control (RBAC)",
-      "Backend performa tinggi Go (Fiber) + frontend responsif Next.js 16 & Tailwind CSS",
-    ],
-    liveDemoUrl: "https://distribucore.my.id",
-    liveDemoLabel: "Live Demo",
-    githubUrl: "https://github.com/afrizadwi21/DistribuCore",
-  },
-  {
-    id: "kasku",
-    name: "KasKu",
-    type: "FinTech",
-    category: "FinTech / Personal Finance & Wealth",
-    description:
-      "Aplikasi pencatat keuangan pribadi multi-user dengan isolasi data penuh, perhitungan batas aman belanja harian (Safe-to-Spend), pelacakan hutang & piutang otomatis, pos alokasi tabungan, dan simulasi belanja wishlist.",
-    tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "JWT & Bcrypt"],
-    color: "#10b981",
-    kind: "fintech",
-    previewCode: "GET /api/me/safe-to-spend",
-    image: "/kasku.png",
-    highlights: [
-      "Arsitektur multi-user dengan isolasi data penuh & proteksi JWT + Refresh Token rotasi",
-      "Kalkulasi real-time uang aman pakai hari ini (Safe-to-Spend) & Pos Tabungan",
-      "Pelacakan otomatis hutang/piutang cicilan, tagihan rutin, dan simulasi wishlist",
-      "High-performance backend Go (Fiber) + Neon PostgreSQL & frontend Next.js 16",
-    ],
-    liveDemoUrl: "https://kasku-web-gamma.vercel.app",
-    liveDemoLabel: "Live Demo",
-    githubUrl: "https://github.com/afrizadwi21/KasKu",
   },
 ];
 
