@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Afriza — Web Developer Portfolio",
+  title: "Portofolio Afriza",
   description:
     "Portfolio of M. Afriza Dwi I, a Web Developer Student & Aspiring Full-Stack Developer at SMK Negeri 4 Padalarang.",
   icons: {
