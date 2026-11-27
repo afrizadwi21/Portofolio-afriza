@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, TitleReveal } from "./Reveal";
 import { ProjectItem, PROJECTS } from "../lib/data";
 import { TechIcon } from "../lib/icons";
@@ -14,43 +14,112 @@ interface ProjectsProps {
 export function Projects({ onSelectProject }: ProjectsProps) {
   const categories = ["All", ...Array.from(new Set(PROJECTS.map((p) => p.type)))];
   const [activeCategory, setActiveCategory] = useState("All");
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const filteredProjects =
     activeCategory === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.type === activeCategory);
 
+  const updateScrollState = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({ left: 0, behavior: "smooth" });
+    const timer = setTimeout(updateScrollState, 320);
+    return () => clearTimeout(timer);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, []);
+
+  const scrollByCards = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const step = Math.max(el.clientWidth * 0.85, 320);
+    el.scrollBy({
+      left: direction === "left" ? -step : step,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id="projects" className="py-28 relative overflow-hidden">
       <div className="max-w-[1180px] w-full mx-auto px-4 sm:px-6">
         <TitleReveal text="Things I’ve been building." className="mb-8" />
 
-        {/* Filter categories */}
+        {/* Filter categories & horizontal slider controls */}
         <Reveal delayMs={100}>
-          <div className="flex flex-wrap gap-2 mb-10" role="tablist" aria-label="Project filter">
-            {categories.map((cat) => (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Project filter">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeCategory === cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-[13px] font-medium border transition-colors duration-200 cursor-pointer ${
+                    activeCategory === cat
+                      ? "bg-[var(--acc)] text-[var(--acc-ink)] border-[var(--acc)]"
+                      : "border-[var(--line)] bg-transparent text-[var(--mut)] hover:text-[var(--fg)] hover:border-[var(--fg)]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2 self-end sm:self-auto shrink-0" role="group" aria-label="Navigasi proyek">
+              <span className="font-mono text-[11px] text-[var(--mut)] mr-1 hidden md:inline">
+                Geser untuk jelajah
+              </span>
               <button
-                key={cat}
                 type="button"
-                role="tab"
-                aria-selected={activeCategory === cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition-colors duration-200 cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-[var(--acc)] text-[var(--acc-ink)] border-[var(--acc)]"
-                    : "border-[var(--line)] bg-transparent text-[var(--mut)] hover:text-[var(--fg)] hover:border-[var(--fg)]"
-                }`}
+                onClick={() => scrollByCards("left")}
+                disabled={!canScrollLeft}
+                aria-label="Proyek sebelumnya"
+                className="w-10 h-10 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--fg)] hover:bg-[var(--glass)] hover:border-[var(--acc)] disabled:opacity-35 disabled:pointer-events-none transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
               >
-                {cat}
+                <ChevronLeft className="w-4 h-4" />
               </button>
-            ))}
+              <button
+                type="button"
+                onClick={() => scrollByCards("right")}
+                disabled={!canScrollRight}
+                aria-label="Proyek berikutnya"
+                className="w-10 h-10 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--fg)] hover:bg-[var(--glass)] hover:border-[var(--acc)] disabled:opacity-35 disabled:pointer-events-none transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </Reveal>
 
-        {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Horizontal snap-scrolling project track */}
+        <div
+          ref={scrollRef}
+          onScroll={updateScrollState}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {filteredProjects.map((project, index) => (
-            <Reveal key={project.id} delayMs={index * 90} variant="zoom">
+            <Reveal
+              key={project.id}
+              delayMs={Math.min(index, 3) * 90}
+              variant="zoom"
+              className="w-[86vw] sm:w-[340px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start flex"
+            >
               <button
                 type="button"
                 onClick={() => onSelectProject(project)}
@@ -125,12 +194,16 @@ export function Projects({ onSelectProject }: ProjectsProps) {
           ))}
 
           {/* More projects on GitHub card */}
-          <Reveal delayMs={filteredProjects.length * 90} variant="zoom">
+          <Reveal
+            delayMs={Math.min(filteredProjects.length, 3) * 90}
+            variant="zoom"
+            className="w-[86vw] sm:w-[340px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start flex"
+          >
             <a
               href="https://github.com/afrizadwi21"
               target="_blank"
               rel="noopener noreferrer"
-              className="group h-full min-h-[240px] flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border border-dashed border-[var(--line)] bg-transparent text-[var(--mut)] text-center transition-all duration-300 hover:text-[var(--acc)] hover:border-[var(--acc)] hover:bg-[var(--glass)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
+              className="group w-full h-full min-h-[240px] flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border border-dashed border-[var(--line)] bg-transparent text-[var(--mut)] text-center transition-all duration-300 hover:text-[var(--acc)] hover:border-[var(--acc)] hover:bg-[var(--glass)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)]"
             >
               <span className="w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <TechIcon name="GitHub" />
