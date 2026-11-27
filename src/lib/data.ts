@@ -18,7 +18,7 @@ export interface ProjectItem {
   description: string;
   tags: string[];
   color: string;
-  kind: "saas" | "api" | "pos" | "school" | "lms";
+  kind: "saas" | "api" | "pos" | "school" | "lms" | "fintech";
   previewCode: string;
   image?: string;
   highlights: string[];
@@ -149,6 +149,28 @@ export const PROJECTS: ProjectItem[] = [
     liveDemoUrl: "https://distribucore.my.id",
     liveDemoLabel: "Live Demo",
     githubUrl: "https://github.com/afrizadwi21/DistribuCore",
+  },
+  {
+    id: "kasku",
+    name: "KasKu",
+    type: "FinTech",
+    category: "FinTech / Personal Finance & Wealth",
+    description:
+      "Aplikasi pencatat keuangan pribadi multi-user dengan isolasi data penuh, perhitungan batas aman belanja harian (Safe-to-Spend), pelacakan hutang & piutang otomatis, pos alokasi tabungan, dan simulasi belanja wishlist.",
+    tags: ["Go (Fiber)", "Next.js 16", "PostgreSQL", "JWT & Bcrypt"],
+    color: "#10b981",
+    kind: "fintech",
+    previewCode: "GET /api/me/safe-to-spend",
+    image: "/kasku.png",
+    highlights: [
+      "Arsitektur multi-user dengan isolasi data penuh & proteksi JWT + Refresh Token rotasi",
+      "Kalkulasi real-time uang aman pakai hari ini (Safe-to-Spend) & Pos Tabungan",
+      "Pelacakan otomatis hutang/piutang cicilan, tagihan rutin, dan simulasi wishlist",
+      "High-performance backend Go (Fiber) + Neon PostgreSQL & frontend Next.js 16",
+    ],
+    liveDemoUrl: "https://kasku-web-gamma.vercel.app",
+    liveDemoLabel: "Live Demo",
+    githubUrl: "https://github.com/afrizadwi21/KasKu",
   },
 ];
 
